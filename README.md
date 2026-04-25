@@ -18,6 +18,7 @@ QML models should be compared against simple and strong classical methods before
 - Specialized agent role files for QML development
 - Templates for experiment plans, dataset cards, model cards, and comparison reports
 - Starter Python examples for classical baselines, Qiskit Machine Learning, and PennyLane
+- A functional Moons benchmark comparing a classical RBF SVM against a Qiskit quantum kernel SVM
 - A tooling map for choosing the right QML framework
 - A sprint checklist for keeping development focused and publishable
 
@@ -83,20 +84,40 @@ Run the classical baseline first:
 python examples/classical_baseline_stub.py
 ```
 
-Then run a QML starter example:
+Then run the functional Moons comparison:
+
+```bash
+python examples/moons_quantum_kernel_comparison.py
+```
+
+Or try the smaller QML starter examples:
 
 ```bash
 python examples/pennylane_qnode_stub.py
-```
-
-Or try:
-
-```bash
 python examples/qiskit_quantum_kernel_stub.py
 python examples/qiskit_qnn_stub.py
 ```
 
 Each example is intentionally small and educational.
+
+## Functional Benchmark: Moons Quantum Kernel Comparison
+
+The first complete comparison script is:
+
+```bash
+python examples/moons_quantum_kernel_comparison.py
+```
+
+It compares:
+
+| Model | Purpose |
+|---|---|
+| `StandardScaler + SVC(kernel='rbf')` | Classical nonlinear baseline |
+| `FidelityQuantumKernel + SVC(kernel='precomputed')` | QML candidate using a Qiskit quantum feature map |
+
+The script uses `sklearn.datasets.make_moons`, scales QML inputs into a gate-angle-friendly range, computes explicit train/test quantum kernel matrices, prints metrics, and includes a claim review.
+
+This benchmark is useful for workflow testing and geometric intuition. It is not evidence of quantum advantage.
 
 ## Suggested Cursor Workflow
 
@@ -151,9 +172,9 @@ This repo is a lightweight coordination layer for AI-assisted QML development.
 Add small reproducible benchmark scripts for:
 
 - Iris
-- Moons
 - Breast cancer dataset
 - Tiny ecological toy dataset
+- Seed-sweep reporting for Moons
 
 ### v0.3.0 — Report Generator
 

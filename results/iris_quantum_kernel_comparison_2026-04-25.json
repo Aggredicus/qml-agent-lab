@@ -1,0 +1,125 @@
+{
+  "experiment_name": "iris_quantum_kernel_comparison",
+  "date": "2026-04-25",
+  "claim_strength": "Educational",
+  "dataset": {
+    "name": "sklearn.datasets.load_iris",
+    "classes": ["versicolor", "virginica"],
+    "class_ids": [1, 2],
+    "features": ["petal length (cm)", "petal width (cm)"],
+    "feature_ids": [2, 3],
+    "n_samples": 100,
+    "random_seed": 42,
+    "train_samples": 75,
+    "test_samples": 25,
+    "split": "75/25 stratified"
+  },
+  "environment": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "sklearn": "1.8.0",
+    "qiskit": "2.4.1",
+    "qiskit_machine_learning": "0.9.0"
+  },
+  "classical_baseline": {
+    "model": "StandardScaler + SVC(kernel='rbf')",
+    "accuracy": 0.88,
+    "correct": 22,
+    "incorrect": 3,
+    "confusion_matrix": [[12, 1], [2, 10]],
+    "classification_report": {
+      "versicolor": {
+        "precision": 0.8571428571428571,
+        "recall": 0.9230769230769231,
+        "f1_score": 0.8888888888888888,
+        "support": 13
+      },
+      "virginica": {
+        "precision": 0.9090909090909091,
+        "recall": 0.8333333333333334,
+        "f1_score": 0.8695652173913043,
+        "support": 12
+      },
+      "accuracy": 0.88,
+      "macro_avg": {
+        "precision": 0.8831168831168831,
+        "recall": 0.8782051282051282,
+        "f1_score": 0.8792270531400965,
+        "support": 25
+      },
+      "weighted_avg": {
+        "precision": 0.8820779220779221,
+        "recall": 0.88,
+        "f1_score": 0.8796135265700482,
+        "support": 25
+      }
+    }
+  },
+  "qml_candidate": {
+    "model": "ZZFeatureMap + FidelityQuantumKernel + SVC(kernel='precomputed')",
+    "feature_map": "ZZFeatureMap(feature_dimension=2, reps=2, entanglement='linear')",
+    "input_scaling": "MinMaxScaler(feature_range=(0, pi))",
+    "qubits": 2,
+    "backend": "default local simulation behavior from Qiskit primitives",
+    "train_kernel_matrix_shape": [75, 75],
+    "test_kernel_matrix_shape": [25, 75],
+    "accuracy": 0.6,
+    "correct": 15,
+    "incorrect": 10,
+    "confusion_matrix": [[8, 5], [5, 7]],
+    "classification_report": {
+      "versicolor": {
+        "precision": 0.6153846153846154,
+        "recall": 0.6153846153846154,
+        "f1_score": 0.6153846153846154,
+        "support": 13
+      },
+      "virginica": {
+        "precision": 0.5833333333333334,
+        "recall": 0.5833333333333334,
+        "f1_score": 0.5833333333333334,
+        "support": 12
+      },
+      "accuracy": 0.6,
+      "macro_avg": {
+        "precision": 0.5993589743589745,
+        "recall": 0.5993589743589745,
+        "f1_score": 0.5993589743589745,
+        "support": 25
+      },
+      "weighted_avg": {
+        "precision": 0.6,
+        "recall": 0.6,
+        "f1_score": 0.6,
+        "support": 25
+      }
+    }
+  },
+  "comparison": {
+    "winner": "classical_baseline",
+    "accuracy_delta_qml_minus_classical": -0.28
+  },
+  "warnings": [
+    "ZZFeatureMap is deprecated as a class in Qiskit 2.1+ and should be replaced with the newer zz_feature_map function in a future patch."
+  ],
+  "limitations": [
+    "Small dataset",
+    "Binary subset only",
+    "Two selected features only",
+    "Single random seed",
+    "No hyperparameter sweep",
+    "No repeated cross-validation",
+    "No runtime comparison",
+    "ZZFeatureMap class is deprecated in recent Qiskit versions",
+    "Tested in one Python environment only"
+  ],
+  "recommended_next_steps": [
+    "Repeat across multiple random seeds",
+    "Add a seed-sweep summary",
+    "Compare additional Iris class pairs",
+    "Compare additional feature pairs",
+    "Tune reps, C, and feature scaling",
+    "Replace deprecated ZZFeatureMap class with newer Qiskit feature-map API",
+    "Add visualization of the decision boundary"
+  ]
+}

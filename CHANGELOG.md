@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 This project uses simple semantic versioning.
 
+## [0.1.6] - 2026-04-25
+
+### Changed
+
+- Updated `CITATION.cff` to match the current release version.
+- Replaced the original v0.1.0 sprint checklist with a current repository quality checklist.
+- Kept `pyproject.toml` focused on Black and Ruff style configuration by removing premature pytest configuration.
+- Updated README badge and governance notes for v0.1.6 consistency.
+
+### Notes
+
+This release is a consistency cleanup. It preserves the agent-first project identity and avoids moving the repository toward a conventional installable Python package structure.
+
 ## [0.1.5] - 2026-04-25
 
 ### Added

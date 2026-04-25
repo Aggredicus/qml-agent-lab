@@ -50,7 +50,7 @@ QML models should be compared against simple and strong classical methods before
 Clone the repo:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/qml-agent-lab.git
+git clone https://github.com/Aggredicus/qml-agent-lab.git
 cd qml-agent-lab
 ```
 

@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 This project uses simple semantic versioning.
 
+## [0.1.2] - 2026-04-25
+
+### Added
+
+- Added `examples/moons_quantum_kernel_comparison.py` as the first functional classical-vs-QML benchmark.
+- Documented the Moons benchmark in the README.
+
+### Notes
+
+The Moons benchmark compares a classical RBF SVM against a Qiskit `FidelityQuantumKernel` with an explicit precomputed-kernel SVC workflow.
+
+This remains an educational benchmark and is not evidence of quantum advantage.
+
 ## [0.1.1] - 2026-04-25
 
 ### Added

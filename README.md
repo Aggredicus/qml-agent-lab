@@ -1,6 +1,6 @@
 # QML Agent Lab
 
-![Version](https://img.shields.io/badge/version-0.1.5-blue)
+![Version](https://img.shields.io/badge/version-0.1.6-blue)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Status](https://img.shields.io/badge/status-experimental-orange)
 
@@ -26,7 +26,7 @@ QML models should be compared against simple and strong classical methods before
 - Verified benchmark results in Markdown and JSON formats
 - Open-source project hygiene files for contribution, citation, conduct, security, and Python style conventions
 - A tooling map for choosing the right QML framework
-- A sprint checklist for keeping development focused and publishable
+- A repository quality checklist for keeping development focused and consistent
 
 ## Agent Team
 
@@ -155,7 +155,8 @@ This project includes standard open-source hygiene files:
 | `CODE_OF_CONDUCT.md` | Community and scientific-integrity expectations |
 | `SECURITY.md` | Security and AI-agent safety notes |
 | `CITATION.cff` | Citation metadata for research-adjacent reuse |
-| `pyproject.toml` | Black, Ruff, and pytest style configuration |
+| `pyproject.toml` | Black and Ruff style configuration |
+| `docs/sprint_checklist.md` | Current repository quality checklist |
 
 ## Suggested Cursor Workflow
 

@@ -19,6 +19,7 @@ QML models should be compared against simple and strong classical methods before
 - Templates for experiment plans, dataset cards, model cards, and comparison reports
 - Starter Python examples for classical baselines, Qiskit Machine Learning, and PennyLane
 - A functional Moons benchmark comparing a classical RBF SVM against a Qiskit quantum kernel SVM
+- Verified benchmark results in Markdown and JSON formats
 - A tooling map for choosing the right QML framework
 - A sprint checklist for keeping development focused and publishable
 
@@ -118,6 +119,24 @@ It compares:
 The script uses `sklearn.datasets.make_moons`, scales QML inputs into a gate-angle-friendly range, computes explicit train/test quantum kernel matrices, prints metrics, and includes a claim review.
 
 This benchmark is useful for workflow testing and geometric intuition. It is not evidence of quantum advantage.
+
+## Latest Benchmark Result
+
+Current verified single-seed result:
+
+| Model | Accuracy |
+|---|---:|
+| Classical RBF SVM | 0.900 |
+| Qiskit quantum kernel SVM | 0.700 |
+
+The classical baseline outperformed the initial QML candidate by 0.200 accuracy points on this toy setup.
+
+Full results:
+
+- `results/moons_quantum_kernel_comparison_2026-04-25.md`
+- `results/moons_quantum_kernel_comparison_2026-04-25.json`
+
+This result is educational and does not support claims of quantum advantage.
 
 ## Suggested Cursor Workflow
 

@@ -1,6 +1,6 @@
 # QML Agent Lab
 
-![Version](https://img.shields.io/badge/version-0.1.4-blue)
+![Version](https://img.shields.io/badge/version-0.1.5-blue)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Status](https://img.shields.io/badge/status-experimental-orange)
 
@@ -22,7 +22,7 @@ QML models should be compared against simple and strong classical methods before
 - Specialized agent role files for QML development
 - Templates for experiment plans, dataset cards, model cards, and comparison reports
 - Starter Python examples for classical baselines, Qiskit Machine Learning, and PennyLane
-- A functional Moons benchmark comparing a classical RBF SVM against a Qiskit quantum kernel SVM
+- Functional Moons and Iris benchmarks comparing classical RBF SVMs against Qiskit quantum kernel SVMs
 - Verified benchmark results in Markdown and JSON formats
 - Open-source project hygiene files for contribution, citation, conduct, security, and Python style conventions
 - A tooling map for choosing the right QML framework
@@ -90,10 +90,11 @@ Run the classical baseline first:
 python examples/classical_baseline_stub.py
 ```
 
-Then run the functional Moons comparison:
+Then run the functional benchmark examples:
 
 ```bash
 python examples/moons_quantum_kernel_comparison.py
+python examples/iris_quantum_kernel_comparison.py
 ```
 
 Or try the smaller QML starter examples:
@@ -106,42 +107,43 @@ python examples/qiskit_qnn_stub.py
 
 Each example is intentionally small and educational.
 
-## Functional Benchmark: Moons Quantum Kernel Comparison
+## Functional Benchmarks
 
-The first complete comparison script is:
+### Moons Quantum Kernel Comparison
 
 ```bash
 python examples/moons_quantum_kernel_comparison.py
 ```
-
-It compares:
-
-| Model | Purpose |
-|---|---|
-| `StandardScaler + SVC(kernel='rbf')` | Classical nonlinear baseline |
-| `FidelityQuantumKernel + SVC(kernel='precomputed')` | QML candidate using a Qiskit quantum feature map |
-
-The script uses `sklearn.datasets.make_moons`, scales QML inputs into a gate-angle-friendly range, computes explicit train/test quantum kernel matrices, prints metrics, and includes a claim review.
-
-This benchmark is useful for workflow testing and geometric intuition. It is not evidence of quantum advantage.
-
-## Latest Benchmark Result
-
-Current verified single-seed result:
 
 | Model | Accuracy |
 |---|---:|
 | Classical RBF SVM | 0.900 |
 | Qiskit quantum kernel SVM | 0.700 |
 
-The classical baseline outperformed the initial QML candidate by 0.200 accuracy points on this toy setup.
-
 Full results:
 
 - `results/moons_quantum_kernel_comparison_2026-04-25.md`
 - `results/moons_quantum_kernel_comparison_2026-04-25.json`
 
-This result is educational and does not support claims of quantum advantage.
+### Iris Quantum Kernel Comparison
+
+```bash
+python examples/iris_quantum_kernel_comparison.py
+```
+
+This benchmark uses the harder binary Iris subset: `versicolor` vs `virginica`, with petal length and petal width as the two features.
+
+| Model | Accuracy |
+|---|---:|
+| Classical RBF SVM | 0.880 |
+| Qiskit quantum kernel SVM | 0.600 |
+
+Full results:
+
+- `results/iris_quantum_kernel_comparison_2026-04-25.md`
+- `results/iris_quantum_kernel_comparison_2026-04-25.json`
+
+These results are educational and do not support claims of quantum advantage.
 
 ## Project Governance and Style
 
@@ -207,10 +209,9 @@ This repo is a lightweight coordination layer for AI-assisted QML development.
 
 Add small reproducible benchmark scripts for:
 
-- Iris
 - Breast cancer dataset
 - Tiny ecological toy dataset
-- Seed-sweep reporting for Moons
+- Seed-sweep reporting for Moons and Iris
 
 ### v0.3.0 — Report Generator
 

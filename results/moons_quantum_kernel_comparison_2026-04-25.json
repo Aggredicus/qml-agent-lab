@@ -1,0 +1,116 @@
+{
+  "experiment_name": "moons_quantum_kernel_comparison",
+  "date": "2026-04-25",
+  "claim_strength": "Educational",
+  "dataset": {
+    "name": "sklearn.datasets.make_moons",
+    "n_samples": 80,
+    "noise": 0.18,
+    "random_seed": 42,
+    "train_samples": 60,
+    "test_samples": 20,
+    "split": "75/25 stratified"
+  },
+  "environment": {
+    "python": "3.13.5",
+    "qiskit": "installed",
+    "qiskit_machine_learning": "installed",
+    "sklearn": "installed",
+    "numpy": "installed"
+  },
+  "classical_baseline": {
+    "model": "StandardScaler + SVC(kernel='rbf')",
+    "accuracy": 0.9,
+    "correct": 18,
+    "incorrect": 2,
+    "confusion_matrix": [[9, 1], [1, 9]],
+    "classification_report": {
+      "class_0": {
+        "precision": 0.90,
+        "recall": 0.90,
+        "f1_score": 0.90,
+        "support": 10
+      },
+      "class_1": {
+        "precision": 0.90,
+        "recall": 0.90,
+        "f1_score": 0.90,
+        "support": 10
+      },
+      "accuracy": 0.90,
+      "macro_avg": {
+        "precision": 0.90,
+        "recall": 0.90,
+        "f1_score": 0.90,
+        "support": 20
+      },
+      "weighted_avg": {
+        "precision": 0.90,
+        "recall": 0.90,
+        "f1_score": 0.90,
+        "support": 20
+      }
+    }
+  },
+  "qml_candidate": {
+    "model": "ZZFeatureMap + FidelityQuantumKernel + SVC(kernel='precomputed')",
+    "feature_map": "ZZFeatureMap(feature_dimension=2, reps=2, entanglement='linear')",
+    "input_scaling": "MinMaxScaler(feature_range=(0, pi))",
+    "qubits": 2,
+    "backend": "default local simulation behavior from Qiskit primitives",
+    "train_kernel_matrix_shape": [60, 60],
+    "test_kernel_matrix_shape": [20, 60],
+    "accuracy": 0.7,
+    "correct": 14,
+    "incorrect": 6,
+    "confusion_matrix": [[6, 4], [2, 8]],
+    "classification_report": {
+      "class_0": {
+        "precision": 0.75,
+        "recall": 0.60,
+        "f1_score": 0.67,
+        "support": 10
+      },
+      "class_1": {
+        "precision": 0.67,
+        "recall": 0.80,
+        "f1_score": 0.73,
+        "support": 10
+      },
+      "accuracy": 0.70,
+      "macro_avg": {
+        "precision": 0.71,
+        "recall": 0.70,
+        "f1_score": 0.70,
+        "support": 20
+      },
+      "weighted_avg": {
+        "precision": 0.71,
+        "recall": 0.70,
+        "f1_score": 0.70,
+        "support": 20
+      }
+    }
+  },
+  "comparison": {
+    "winner": "classical_baseline",
+    "accuracy_delta_qml_minus_classical": -0.2
+  },
+  "limitations": [
+    "Small toy dataset",
+    "Single random seed",
+    "No hyperparameter sweep",
+    "No repeated cross-validation",
+    "No runtime comparison",
+    "ZZFeatureMap class is deprecated in recent Qiskit versions",
+    "Tested in one Python environment only"
+  ],
+  "recommended_next_steps": [
+    "Repeat across multiple random seeds",
+    "Add a seed-sweep summary",
+    "Compare additional feature maps",
+    "Tune reps, C, and feature scaling",
+    "Replace deprecated ZZFeatureMap class with newer Qiskit feature-map API",
+    "Add visualization of the Moons decision boundary"
+  ]
+}

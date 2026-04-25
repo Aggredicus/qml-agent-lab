@@ -17,7 +17,7 @@ QML models should be compared against simple and strong classical methods before
 - A reusable `AGENT.md` operating prompt for Cursor/Codex-style tools
 - Specialized agent role files for QML development
 - Templates for experiment plans, dataset cards, model cards, and comparison reports
-- Starter Python examples for Qiskit Machine Learning and PennyLane
+- Starter Python examples for classical baselines, Qiskit Machine Learning, and PennyLane
 - A tooling map for choosing the right QML framework
 - A sprint checklist for keeping development focused and publishable
 
@@ -47,6 +47,10 @@ QML models should be compared against simple and strong classical methods before
 
 ## Quickstart
 
+Recommended Python version: **Python 3.10 or 3.11**.
+
+Qiskit and PennyLane dependencies can change over time, so use a clean virtual environment for the most reliable results.
+
 Clone the repo:
 
 ```bash
@@ -61,13 +65,25 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
+On Windows PowerShell, activate with:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
 Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run a starter example:
+Run the classical baseline first:
+
+```bash
+python examples/classical_baseline_stub.py
+```
+
+Then run a QML starter example:
 
 ```bash
 python examples/pennylane_qnode_stub.py

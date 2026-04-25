@@ -1,18 +1,34 @@
-# Sprint Checklist
+# Repository Quality Checklist
 
-This checklist verifies that `qml-agent-lab` is ready for a first GitHub publication.
+This checklist verifies that `qml-agent-lab` remains consistent, professional, and aligned with its agent-first QML research-lab identity.
 
-## Repository Structure
+## Current Release State
 
-- [ ] `README.md` exists
-- [ ] `AGENT.md` exists
-- [ ] `LICENSE` exists
-- [ ] `.gitignore` exists
-- [ ] `requirements.txt` exists
-- [ ] `agents/` directory exists
-- [ ] `templates/` directory exists
-- [ ] `docs/` directory exists
-- [ ] `examples/` directory exists
+- [ ] `VERSION` matches the README badge.
+- [ ] `VERSION` matches `CITATION.cff`.
+- [ ] `CHANGELOG.md` includes the current release.
+- [ ] README benchmark summaries match the latest result files.
+- [ ] Citation metadata points to the correct repository.
+
+## Core Repository Structure
+
+- [ ] `README.md` exists.
+- [ ] `AGENT.md` exists.
+- [ ] `LICENSE` exists.
+- [ ] `.gitignore` exists.
+- [ ] `requirements.txt` exists.
+- [ ] `VERSION` exists.
+- [ ] `CHANGELOG.md` exists.
+- [ ] `CITATION.cff` exists.
+- [ ] `CONTRIBUTING.md` exists.
+- [ ] `CODE_OF_CONDUCT.md` exists.
+- [ ] `SECURITY.md` exists.
+- [ ] `pyproject.toml` exists.
+- [ ] `agents/` directory exists.
+- [ ] `templates/` directory exists.
+- [ ] `docs/` directory exists.
+- [ ] `examples/` directory exists.
+- [ ] `results/` directory exists.
 
 ## Agent Files
 
@@ -24,7 +40,7 @@ This checklist verifies that `qml-agent-lab` is ready for a first GitHub publica
 - [ ] `agents/ethics_claims_reviewer.md`
 - [ ] `agents/documentation_agent.md`
 
-Each agent file includes:
+Each agent file should include:
 
 - [ ] Mission
 - [ ] Inputs
@@ -40,79 +56,120 @@ Each agent file includes:
 - [ ] `templates/qml_model_card.md`
 - [ ] `templates/comparison_report.md`
 
-Each template includes:
+Each template should include:
 
-- [ ] Purpose
 - [ ] Required metadata
+- [ ] Classical baseline fields
+- [ ] QML candidate fields
 - [ ] Limitations section
+- [ ] Claim review or claim strength section
 - [ ] Review checklist
 
 ## Examples
 
+Starter examples:
+
+- [ ] `examples/classical_baseline_stub.py`
 - [ ] `examples/qiskit_quantum_kernel_stub.py`
 - [ ] `examples/qiskit_qnn_stub.py`
 - [ ] `examples/pennylane_qnode_stub.py`
 
-Each example:
+Functional benchmark examples:
 
-- [ ] Runs as a normal Python script
-- [ ] Uses local toy data or tiny input
-- [ ] Handles missing imports gracefully
-- [ ] Prints clear output
-- [ ] Avoids large training loops
-- [ ] Avoids unsupported claims
+- [ ] `examples/moons_quantum_kernel_comparison.py`
+- [ ] `examples/iris_quantum_kernel_comparison.py`
+
+Each example should:
+
+- [ ] Run as a normal Python script.
+- [ ] Use local toy or built-in data.
+- [ ] Handle missing imports gracefully.
+- [ ] Print readable output.
+- [ ] Include a classical baseline where relevant.
+- [ ] Avoid unsupported claims.
+- [ ] Document limitations or print a claim review.
+
+## Results
+
+Current benchmark records:
+
+- [ ] `results/moons_quantum_kernel_comparison_2026-04-25.md`
+- [ ] `results/moons_quantum_kernel_comparison_2026-04-25.json`
+- [ ] `results/iris_quantum_kernel_comparison_2026-04-25.md`
+- [ ] `results/iris_quantum_kernel_comparison_2026-04-25.json`
+
+Each result record should include:
+
+- [ ] Dataset details
+- [ ] Environment details
+- [ ] Classical baseline configuration
+- [ ] QML candidate configuration
+- [ ] Metrics
+- [ ] Confusion matrix or equivalent when applicable
+- [ ] Interpretation
+- [ ] Claim review
+- [ ] Known limitations
+- [ ] Recommended next steps
 
 ## Documentation
 
-- [ ] README explains project purpose
-- [ ] README includes quickstart
-- [ ] README includes agent team
-- [ ] README includes workflow
-- [ ] README includes “What this repo is not”
-- [ ] README includes roadmap
-- [ ] `docs/qml_tooling_map.md` explains framework choices
-- [ ] `docs/sprint_checklist.md` is complete
+- [ ] README explains project purpose.
+- [ ] README includes quickstart.
+- [ ] README includes agent team.
+- [ ] README includes workflow.
+- [ ] README includes functional benchmark summaries.
+- [ ] README includes project governance/style section.
+- [ ] README includes “What this repo is not.”
+- [ ] README includes roadmap.
+- [ ] `docs/qml_tooling_map.md` explains framework choices.
+- [ ] `docs/sprint_checklist.md` reflects the current repo state.
 
 ## Claim Safety
 
-- [ ] No unsupported quantum advantage claims
-- [ ] Educational examples labeled clearly
-- [ ] Classical baseline requirement is visible
-- [ ] Limitations are required in templates
-- [ ] Ethics & Claims Reviewer exists
-- [ ] Claim strength levels are defined
+- [ ] No unsupported quantum advantage claims.
+- [ ] Educational examples are labeled clearly.
+- [ ] Classical baseline requirement is visible.
+- [ ] Single-seed benchmark limitations are visible.
+- [ ] QML underperformance is documented honestly where observed.
+- [ ] Ethics & Claims Reviewer exists.
+- [ ] Claim strength levels are defined in `AGENT.md`.
 
-## Dependency Check
+## Dependency and Scope Check
 
-- [ ] Dependencies are minimal
-- [ ] No Docker added
-- [ ] No CI added
-- [ ] No notebooks added
-- [ ] No package build system added
-- [ ] No cloud services required
+- [ ] Dependencies remain minimal.
+- [ ] No Docker added unless explicitly justified.
+- [ ] No CI added unless explicitly requested.
+- [ ] No notebooks added unless explicitly requested.
+- [ ] No package build metadata added unless the project intentionally becomes installable.
+- [ ] No cloud services required.
+- [ ] `pyproject.toml` remains style/tooling config, not package metadata.
 
-## Publication Readiness
+## Agent-First Identity Check
 
-- [ ] Repo can be understood in under 5 minutes
-- [ ] Repo is useful even before running examples
-- [ ] Cursor can use `AGENT.md` as operating instructions
-- [ ] Future experiments can reuse templates
-- [ ] v0.1.0 release notes can be written
+The repo should continue to feel like:
 
-## Suggested v0.1.0 Release Notes
-
-```markdown
-# qml-agent-lab v0.1.0
-
-Initial release.
-
-Includes:
-- Cursor/Codex-ready AGENT.md
-- QML development agent team
-- Reusable experiment templates
-- QML tooling map
-- Starter Qiskit and PennyLane examples
-- Sprint checklist for publication readiness
-
-This release focuses on agent orchestration, documentation discipline, and safe QML experimentation.
+```text
+agents + templates + runnable examples + verified results
 ```
+
+Not like a prematurely abstracted Python package.
+
+Before major structural changes, ask:
+
+- [ ] Does this make Cursor agents more effective?
+- [ ] Does this preserve low-token navigation?
+- [ ] Does this improve experiment discipline?
+- [ ] Does this avoid unnecessary abstraction?
+- [ ] Does this keep classical baselines central?
+
+## Release Readiness
+
+Before tagging or describing a release:
+
+- [ ] Version fields are aligned.
+- [ ] Changelog entry exists.
+- [ ] README badge is updated.
+- [ ] New examples are documented.
+- [ ] New results are linked.
+- [ ] Claims are reviewed.
+- [ ] Limitations are included.

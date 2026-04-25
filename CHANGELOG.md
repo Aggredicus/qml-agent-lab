@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 This project uses simple semantic versioning.
 
+## [0.1.3] - 2026-04-25
+
+### Added
+
+- Added verified Moons benchmark result report in Markdown.
+- Added machine-readable Moons benchmark result record in JSON.
+- Added README summary of the first measured classical-vs-QML result.
+
+### Notes
+
+The classical RBF SVM outperformed the initial Qiskit quantum kernel SVM on the single-seed Moons benchmark.
+
+This result is useful for honest benchmark discipline and does not support claims of quantum advantage.
+
 ## [0.1.2] - 2026-04-25
 
 ### Added

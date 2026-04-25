@@ -1,5 +1,9 @@
 # QML Agent Lab
 
+![Version](https://img.shields.io/badge/version-0.1.4-blue)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Status](https://img.shields.io/badge/status-experimental-orange)
+
 **QML Agent Lab** is a lightweight agent operating system for designing, implementing, evaluating, and documenting quantum machine learning experiments in AI-assisted development workflows.
 
 This repository is built for developers using Cursor, Codex, ChatGPT, or similar AI coding tools who want a reusable team of QML-aware agents.
@@ -20,6 +24,7 @@ QML models should be compared against simple and strong classical methods before
 - Starter Python examples for classical baselines, Qiskit Machine Learning, and PennyLane
 - A functional Moons benchmark comparing a classical RBF SVM against a Qiskit quantum kernel SVM
 - Verified benchmark results in Markdown and JSON formats
+- Open-source project hygiene files for contribution, citation, conduct, security, and Python style conventions
 - A tooling map for choosing the right QML framework
 - A sprint checklist for keeping development focused and publishable
 
@@ -137,6 +142,18 @@ Full results:
 - `results/moons_quantum_kernel_comparison_2026-04-25.json`
 
 This result is educational and does not support claims of quantum advantage.
+
+## Project Governance and Style
+
+This project includes standard open-source hygiene files:
+
+| File | Purpose |
+|---|---|
+| `CONTRIBUTING.md` | Contribution workflow and experiment standards |
+| `CODE_OF_CONDUCT.md` | Community and scientific-integrity expectations |
+| `SECURITY.md` | Security and AI-agent safety notes |
+| `CITATION.cff` | Citation metadata for research-adjacent reuse |
+| `pyproject.toml` | Black, Ruff, and pytest style configuration |
 
 ## Suggested Cursor Workflow
 

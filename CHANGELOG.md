@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 This project uses simple semantic versioning.
 
+## [0.1.5] - 2026-04-25
+
+### Added
+
+- Added `examples/iris_quantum_kernel_comparison.py` as the second functional classical-vs-QML benchmark.
+- Added verified Iris benchmark result report in Markdown.
+- Added machine-readable Iris benchmark result record in JSON.
+- Updated README benchmark section to summarize both Moons and Iris results.
+
+### Notes
+
+The Iris benchmark uses the harder `versicolor` vs `virginica` binary subset with petal length and petal width as features.
+
+The classical RBF SVM outperformed the initial Qiskit quantum kernel SVM on the single-seed Iris benchmark.
+
+This result is useful for honest benchmark discipline and does not support claims of quantum advantage.
+
 ## [0.1.4] - 2026-04-25
 
 ### Added

@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+title: "QML Agent Lab"
+message: "If you use QML Agent Lab in your work, please cite this repository."
+type: software
+authors:
+  - family-names: "Dillon"
+repository-code: "https://github.com/Aggredicus/qml-agent-lab"
+url: "https://github.com/Aggredicus/qml-agent-lab"
+abstract: >
+  QML Agent Lab is a lightweight agent operating system for designing,
+  implementing, evaluating, and documenting quantum machine learning
+  experiments in AI-assisted development workflows. It emphasizes classical
+  baselines, reproducible comparison, modest claims, and agent-readable
+  experiment artifacts.
+keywords:
+  - quantum machine learning
+  - QML
+  - AI agents
+  - machine learning
+  - reproducibility
+  - benchmarking
+  - Qiskit
+  - PennyLane
+license: MIT
+version: "0.1.4"
+date-released: "2026-04-25"

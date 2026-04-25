@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 This project uses simple semantic versioning.
 
+## [0.1.4] - 2026-04-25
+
+### Added
+
+- Added `CONTRIBUTING.md` with contribution standards and experiment checklist.
+- Added `SECURITY.md` with local-use, credential, and AI-agent safety guidance.
+- Added `CODE_OF_CONDUCT.md` with community and scientific-integrity expectations.
+- Added `CITATION.cff` for research-adjacent citation metadata.
+- Added `pyproject.toml` with Black, Ruff, and pytest style configuration.
+- Added README badges and a project governance/style section.
+
+### Notes
+
+This release improves open-source project hygiene and makes the repository look more professional to contributors, reviewers, and future AI coding agents.
+
 ## [0.1.3] - 2026-04-25
 
 ### Added

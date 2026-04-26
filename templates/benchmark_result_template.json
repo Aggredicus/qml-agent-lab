@@ -1,0 +1,19 @@
+{
+  "experiment_id": "",
+  "dataset": "",
+  "version": "",
+  "classical_baseline": {
+    "model": "",
+    "framework": "",
+    "accuracy": 0.0
+  },
+  "quantum_model": {
+    "model": "",
+    "framework": "",
+    "accuracy": 0.0
+  },
+  "delta_vs_classical": 0.0,
+  "claim_status": "",
+  "limitations": [],
+  "notes": ""
+}

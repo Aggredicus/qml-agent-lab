@@ -34,13 +34,11 @@ def load_results() -> list[dict[str, Any]]:
         if c is None:
             raise ValueError(f"Invalid classical accuracy in {file}")
 
-        # Recompute delta for consistency
         if q is not None:
             data["delta_vs_classical"] = round(q - c, 6)
         else:
             data["delta_vs_classical"] = None
 
-        # Enforce claim_status consistency
         status = data.get("claim_status")
         if q is None:
             expected = "quantum_not_run"
@@ -64,7 +62,7 @@ def update_leaderboard(results: list[dict[str, Any]]) -> dict[str, Any]:
         return _safe_float(q) or 0.0
 
     leaderboard = {
-        "repo_version": "v0.2.0",
+        "repo_version": "v0.3.0",
         "principle": "Every QML experiment must include a classical baseline.",
         "benchmarks": sorted(results, key=q_acc, reverse=True),
     }
@@ -77,6 +75,15 @@ def update_leaderboard(results: list[dict[str, Any]]) -> dict[str, Any]:
 
 def print_summary(results: list[dict[str, Any]]) -> None:
     print("\nQML Agent Lab Benchmark Summary\n")
+
+    best_classical = max(results, key=lambda r: r["classical_baseline"]["accuracy"])
+    best_quantum = max(results, key=lambda r: (r.get("quantum_model") or {}).get("accuracy") or 0)
+    largest_delta = max(results, key=lambda r: abs(r.get("delta_vs_classical") or 0))
+
+    print(f"Best classical: {best_classical['dataset']} ({best_classical['classical_baseline']['accuracy']:.3f})")
+    print(f"Best quantum: {best_quantum['dataset']}")
+    print(f"Largest delta: {largest_delta['dataset']} ({largest_delta['delta_vs_classical']})")
+
     for r in results:
         c = r["classical_baseline"]["accuracy"]
         q = (r.get("quantum_model") or {}).get("accuracy")

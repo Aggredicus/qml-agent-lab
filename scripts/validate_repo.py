@@ -19,6 +19,10 @@ ALLOWED_CLAIM_STATUS = {
     "inconclusive",
     "not_applicable",
 }
+SKIP_CONTRIB_FILES = {
+    "contribution_packet.schema.json",
+    "README.md",
+}
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -36,6 +40,19 @@ def as_float(value: Any) -> float | None:
         return float(value)
     except (TypeError, ValueError):
         return None
+
+
+def is_contribution_packet(path: Path) -> bool:
+    """Return true only for actual contribution packets.
+
+    The agent_contributions directory may contain schemas or documentation.
+    Those files are not contribution packets and should not be validated as such.
+    """
+    if path.name in SKIP_CONTRIB_FILES:
+        return False
+    if "schema" in path.name or "template" in path.name:
+        return False
+    return path.suffix == ".json"
 
 
 def validate_benchmark(path: Path, errors: list[str]) -> None:
@@ -104,8 +121,9 @@ def main() -> int:
     for path in sorted(BENCHMARK_DIR.glob("*.json")):
         validate_benchmark(path, errors)
 
-    for path in sorted(CONTRIB_DIR.glob("*.json")):
-        validate_contribution_packet(path, errors)
+    for path in sorted(CONTRIB_DIR.rglob("*.json")):
+        if is_contribution_packet(path):
+            validate_contribution_packet(path, errors)
 
     if errors:
         print("Validation failed:\n")

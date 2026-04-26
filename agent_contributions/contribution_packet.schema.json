@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Contribution Packet",
+  "type": "object",
+  "required": [
+    "contribution_id",
+    "contribution_type",
+    "goal",
+    "human_review_required"
+  ],
+  "properties": {
+    "contribution_id": {"type": "string"},
+    "agent_name": {"type": "string"},
+    "contribution_type": {
+      "type": "string",
+      "enum": ["experiment", "benchmark_result", "improvement", "claim_review"]
+    },
+    "goal": {"type": "string"},
+    "files_changed": {"type": "array", "items": {"type": "string"}},
+    "classical_baseline_included": {"type": "boolean"},
+    "claim_status": {"type": "string"},
+    "summary": {"type": "string"},
+    "human_review_required": {"type": "boolean"}
+  }
+}

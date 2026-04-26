@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>QML Agent Lab Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    h1 { margin-bottom: 10px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f4f4f4; }
+  </style>
+</head>
+<body>
+
+<h1>QML Agent Lab Dashboard</h1>
+<p>Lightweight view of benchmark results. No automatic execution.</p>
+
+<table id="resultsTable">
+  <thead>
+    <tr>
+      <th>Dataset</th>
+      <th>Classical Accuracy</th>
+      <th>Quantum Accuracy</th>
+      <th>Delta</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script>
+async function loadResults() {
+  try {
+    const response = await fetch('benchmarks/leaderboard.json');
+    const data = await response.json();
+
+    const tbody = document.querySelector('#resultsTable tbody');
+    tbody.innerHTML = '';
+
+    data.benchmarks.forEach(b => {
+      const tr = document.createElement('tr');
+
+      const classical = b.classical_baseline?.accuracy ?? 'N/A';
+      const quantum = b.quantum_model?.accuracy ?? 'N/A';
+      const delta = b.delta_vs_classical ?? 'N/A';
+
+      tr.innerHTML = `
+        <td>${b.dataset}</td>
+        <td>${classical}</td>
+        <td>${quantum}</td>
+        <td>${delta}</td>
+        <td>${b.claim_status}</td>
+      `;
+
+      tbody.appendChild(tr);
+    });
+  } catch (err) {
+    console.error('Failed to load results:', err);
+  }
+}
+
+loadResults();
+</script>
+
+</body>
+</html>

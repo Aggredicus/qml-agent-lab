@@ -10,5 +10,13 @@
   "validation_performed": "",
   "scientific_value": "",
   "failure_modes": "",
+  "rubric": {
+    "scientific_value": {"score": 0, "justification": ""},
+    "reproducibility": {"score": 0, "justification": ""},
+    "baseline_integrity": {"score": 0, "justification": ""},
+    "claim_discipline": {"score": 0, "justification": ""},
+    "maintainability": {"score": 0, "justification": ""}
+  },
+  "confidence": 0.0,
   "human_review_required": true
 }

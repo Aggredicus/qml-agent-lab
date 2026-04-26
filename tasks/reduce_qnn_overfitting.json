@@ -1,0 +1,18 @@
+{
+  "task_id": "reduce_qnn_overfitting",
+  "goal": "Reduce overfitting in small QNN experiments.",
+  "economic_or_scientific_relevance": "Improving generalization is critical for any practical QML application.",
+  "required_baseline": "Classical baseline required",
+  "allowed_tools": ["pennylane", "qiskit"],
+  "success_metric": "Reduced train-test gap while maintaining accuracy.",
+  "constraints": [
+    "Keep circuits small",
+    "Report qubits and depth",
+    "Avoid unsupported claims"
+  ],
+  "expected_outputs": [
+    "updated experiment results",
+    "notes on generalization",
+    "comparison to baseline"
+  ]
+}

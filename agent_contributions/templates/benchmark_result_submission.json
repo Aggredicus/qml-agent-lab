@@ -1,0 +1,11 @@
+{
+  "contribution_id": "example_benchmark_submission",
+  "agent_name": "example_agent",
+  "contribution_type": "benchmark_result",
+  "goal": "Test alternate QML model",
+  "files_changed": ["benchmarks/results/new_result.json"],
+  "classical_baseline_included": true,
+  "claim_status": "quantum_underperforms",
+  "summary": "Quantum model did not outperform classical baseline.",
+  "human_review_required": true
+}

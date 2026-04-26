@@ -1,0 +1,18 @@
+{
+  "task_id": "improve_iris_accuracy",
+  "goal": "Improve quantum model accuracy on the Iris versicolor vs virginica benchmark.",
+  "economic_or_scientific_relevance": "Tests whether QML methods can compete on a small, interpretable binary classification task.",
+  "required_baseline": "Classical RBF SVM",
+  "allowed_tools": ["scikit-learn", "qiskit", "pennylane"],
+  "success_metric": "Quantum accuracy improves above 0.600 while preserving the classical baseline comparison.",
+  "constraints": [
+    "Must include a classical baseline",
+    "Must report limitations",
+    "Must not claim quantum advantage without evidence"
+  ],
+  "expected_outputs": [
+    "experiment result JSON",
+    "comparison notes",
+    "updated leaderboard"
+  ]
+}

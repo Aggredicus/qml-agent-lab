@@ -1,0 +1,6 @@
+{
+  "task_id": "improve_moons_accuracy",
+  "goal": "Improve quantum accuracy on moons dataset",
+  "success_metric": "accuracy > 0.80",
+  "constraints": ["must include classical baseline"]
+}

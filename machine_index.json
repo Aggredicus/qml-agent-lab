@@ -1,0 +1,20 @@
+{
+  "repo": "qml-agent-lab",
+  "version": "v0.2.0",
+  "purpose": "Agent-executable QML benchmark lab",
+  "principles": [
+    "Every QML experiment must include a classical baseline",
+    "No unsupported quantum advantage claims"
+  ],
+  "entrypoints": {
+    "benchmark_runner": "python benchmarks/runner.py",
+    "mcp": "python mcp/server.py"
+  },
+  "experiments": [
+    "moons",
+    "iris"
+  ],
+  "schemas": [
+    "schemas/experiment_result.schema.json"
+  ]
+}

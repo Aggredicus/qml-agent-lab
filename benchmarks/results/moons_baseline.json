@@ -1,0 +1,18 @@
+{
+  "experiment_id": "moons_qkernel_v0_1_6",
+  "dataset": "moons",
+  "version": "v0.1.6",
+  "classical_baseline": {
+    "model": "RBF SVM",
+    "framework": "scikit-learn",
+    "accuracy": 0.9
+  },
+  "quantum_model": {
+    "model": "Qiskit Quantum Kernel SVM",
+    "framework": "qiskit",
+    "accuracy": 0.7
+  },
+  "delta_vs_classical": -0.2,
+  "claim_status": "quantum_underperforms",
+  "notes": "Classical baseline outperformed quantum model."
+}

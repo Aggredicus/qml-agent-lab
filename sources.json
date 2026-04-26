@@ -1,0 +1,32 @@
+{
+  "SRC-001": {
+    "title": "Qiskit Documentation",
+    "url": "https://docs.quantum.ibm.com/",
+    "type": "documentation",
+    "summary": "IBM quantum SDK documentation"
+  },
+  "SRC-002": {
+    "title": "Support-vector networks",
+    "url": "https://link.springer.com/article/10.1007/BF00994018",
+    "type": "academic",
+    "summary": "Foundational SVM theory"
+  },
+  "SRC-003": {
+    "title": "Quantum machine learning (Nature)",
+    "url": "https://www.nature.com/articles/nature23474",
+    "type": "academic",
+    "summary": "QML overview"
+  },
+  "SRC-004": {
+    "title": "PennyLane Documentation",
+    "url": "https://docs.pennylane.ai/",
+    "type": "documentation",
+    "summary": "Differentiable quantum programming"
+  },
+  "SRC-005": {
+    "title": "scikit-learn User Guide",
+    "url": "https://scikit-learn.org/stable/user_guide.html",
+    "type": "documentation",
+    "summary": "Classical ML reference"
+  }
+}

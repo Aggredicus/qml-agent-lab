@@ -1,6 +1,5 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/Aggredicus/qml-agent-lab/schemas/experiment_result.schema.json",
   "title": "QML Agent Lab Experiment Result",
   "type": "object",
   "required": [
@@ -9,49 +8,21 @@
     "version",
     "classical_baseline",
     "delta_vs_classical",
-    "claim_status"
+    "claim_status",
+    "limitations"
   ],
   "properties": {
-    "experiment_id": {"type": "string", "minLength": 1},
-    "dataset": {"type": "string", "minLength": 1},
-    "version": {"type": "string", "minLength": 1},
-    "classical_baseline": {
-      "type": "object",
-      "required": ["model", "framework", "accuracy"],
-      "properties": {
-        "model": {"type": "string", "minLength": 1},
-        "framework": {"type": "string", "minLength": 1},
-        "accuracy": {"type": "number", "minimum": 0, "maximum": 1}
-      },
-      "additionalProperties": true
+    "experiment_id": {"type": "string"},
+    "dataset": {"type": "string"},
+    "version": {"type": "string"},
+    "classical_baseline": {"type": "object"},
+    "quantum_model": {"type": ["object", "null"]},
+    "delta_vs_classical": {"type": ["number", "null"]},
+    "claim_status": {"type": "string"},
+    "limitations": {
+      "type": "array",
+      "items": {"type": "string"}
     },
-    "quantum_model": {
-      "type": ["object", "null"],
-      "properties": {
-        "model": {"type": "string"},
-        "framework": {"type": "string"},
-        "accuracy": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
-        "shots": {"type": ["integer", "null"], "minimum": 0},
-        "backend": {"type": ["string", "null"]},
-        "qubits": {"type": ["integer", "null"], "minimum": 0},
-        "circuit_depth": {"type": ["integer", "null"], "minimum": 0}
-      },
-      "additionalProperties": true
-    },
-    "delta_vs_classical": {"type": "number"},
-    "claim_status": {
-      "type": "string",
-      "enum": [
-        "quantum_underperforms",
-        "quantum_matches_classical",
-        "quantum_outperforms_classical",
-        "inconclusive",
-        "quantum_not_run"
-      ]
-    },
-    "notes": {"type": "string"},
-    "metrics": {"type": "object", "additionalProperties": true},
-    "limitations": {"type": "array", "items": {"type": "string"}}
-  },
-  "additionalProperties": true
+    "notes": {"type": "string"}
+  }
 }

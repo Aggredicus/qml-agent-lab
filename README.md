@@ -8,6 +8,7 @@ This repository enables **human developers and AI agents** to collaboratively ex
 - enforced classical baselines  
 - honest performance reporting  
 - structured contribution workflows  
+- grounded evaluation and reputation tracking
 
 ---
 
@@ -19,7 +20,7 @@ This repository explicitly avoids hype and unsupported claims.
 
 ---
 
-## 🔬 Verified Benchmarks (v0.3.0)
+## 🔬 Verified Benchmarks
 
 ### Moons Dataset
 - Classical RBF SVM: **0.900**
@@ -50,70 +51,54 @@ examples/               → runnable QML + classical scripts
 benchmarks/             → verified result fixtures
 mcp/                    → local agent command interface
 agent_contributions/    → structured contribution packets
-tasks/                  → executable task definitions
+scripts/                → validation + helper tools
+
+docs/                   → governance, rubric, and review systems
 
 TASK_BOARD.md           → Kanban system
 NEXT_AGENT_STEP.md      → next-step prompt for agents
 AGENT.md                → full agent operating instructions
-RELEASE_CHECKLIST.md    → release validation checklist
+CONTRIBUTION_LOG.md     → project memory + reputation tracking
 ```
-
----
-
-## 🤖 Agent Entry Point
-
-If you are an AI agent:
-
-1. Read:
-   - `machine_index.json`
-   - `AGENT.md`
-   - `TASK_BOARD.md`
-   - `NEXT_AGENT_STEP.md`
-
-2. Select one small task
-
-3. Create a contribution packet in:
-```
-agent_contributions/
-```
-
-4. Submit a pull request
 
 ---
 
 ## 🔁 Contribution Loop
 
 ```
-Agent arrives
+Contributor or Agent arrives
 → Reads instructions
 → Selects task
 → Creates contribution packet
-→ Submits PR
-→ Human review
+→ Runs validation script
+→ Submits PR with rubric self-assessment
+→ Human or agent reviewer assigns score
+→ Reputation updated in contribution log
 → System evolves
 ```
 
 ---
 
-## 🧪 MCP Interface
+## 🧪 Validation
 
 Run locally:
 
 ```bash
-python mcp/server.py list_experiments
-python mcp/server.py run_experiment moons
+python scripts/validate_repo.py
 ```
 
-This interface is:
-- deterministic
-- safe
-- non-executing (no heavy compute)
+This checks:
+
+- benchmark schema correctness
+- claim status alignment
+- contribution packet structure
 
 ---
 
 ## 📊 Benchmark Rules
 
 All results must include:
+
 - classical baseline
 - quantum model (if present)
 - delta vs classical
@@ -122,14 +107,19 @@ All results must include:
 
 ---
 
-## 🧠 Claim Status System
+## 🧠 Contribution Evaluation System
 
-| Status | Meaning |
-|------|--------|
-| quantum_underperforms | Worse than baseline |
-| quantum_matches_classical | Equivalent |
-| quantum_outperforms_classical | Better |
-| quantum_not_run | Baseline only |
+Each PR must include:
+
+- rubric-based self-assessment
+- justification for scores
+- confidence level
+
+Reviewers:
+
+- assign adjusted score
+- may override contributor score
+- update reputation in `CONTRIBUTION_LOG.md`
 
 ---
 
@@ -143,30 +133,21 @@ All results must include:
 
 ---
 
-## 🗺️ Roadmap
-
-- Expand benchmark suite
-- Add controlled QML experiments
-- Build leaderboard visualization
-- Introduce contribution reputation system
-- Enable structured agent participation at scale
-
----
-
 ## 🏁 Current Status
 
 ```
-Version: v0.3.0
-State: Stable, pre-1.0
-Ready for: Controlled agent contribution
+Version: v1.0.0
+State: Stable, community-ready
+Ready for: Human + agent collaborative research
 ```
 
 ---
 
 ## 🧠 Final Note
 
-If you are an agent:
+If you are a contributor or agent:
 
 > Make the smallest useful improvement.  
 > Report honestly.  
+> Justify your reasoning.  
 > Leave the system better than you found it.

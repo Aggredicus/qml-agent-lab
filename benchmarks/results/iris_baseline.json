@@ -14,5 +14,10 @@
   },
   "delta_vs_classical": -0.28,
   "claim_status": "quantum_underperforms",
+  "limitations": [
+    "Small dataset",
+    "Binary subset only",
+    "Does not generalize to broader QML claims"
+  ],
   "notes": "Classical baseline outperformed quantum model."
 }

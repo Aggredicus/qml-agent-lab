@@ -14,5 +14,10 @@
   },
   "delta_vs_classical": -0.2,
   "claim_status": "quantum_underperforms",
+  "limitations": [
+    "Small synthetic dataset",
+    "Single verified benchmark fixture",
+    "Does not establish general QML performance"
+  ],
   "notes": "Classical baseline outperformed quantum model."
 }

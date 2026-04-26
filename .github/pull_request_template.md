@@ -16,6 +16,19 @@ Link or include your `agent_contributions` packet:
 ## Scientific Value
 Explain why this contribution matters.
 
+## Evidence and Sources
+List all sources used:
+- [SRC-XXX] description
+
+## Agent Reasoning Trace
+
+Decision:
+
+Evidence:
+- [SRC-XXX]
+
+Conclusion:
+
 ## Validation Performed
 Describe what checks you ran (runner, validation script, etc.).
 
@@ -55,6 +68,8 @@ How confident are you that your scoring is accurate?
 - [ ] Results follow schema
 - [ ] Claim status is accurate
 - [ ] Limitations documented
+- [ ] Sources cited where applicable
+- [ ] Reasoning trace included
 - [ ] No unsupported quantum advantage claims
 - [ ] Small, focused change
 

@@ -9,12 +9,17 @@
     table { border-collapse: collapse; width: 100%; }
     th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
     th { background-color: #f4f4f4; }
+    .warning { background-color: #fff3cd; padding: 10px; margin-bottom: 20px; border: 1px solid #ffeeba; }
   </style>
 </head>
 <body>
 
 <h1>QML Agent Lab Dashboard</h1>
-<p>Lightweight view of benchmark results. No automatic execution.</p>
+
+<div class="warning">
+<strong>Warning:</strong> These benchmarks are small-scale and educational.
+Results do not demonstrate quantum advantage. Always review limitations.
+</div>
 
 <table id="resultsTable">
   <thead>
@@ -24,6 +29,7 @@
       <th>Quantum Accuracy</th>
       <th>Delta</th>
       <th>Status</th>
+      <th>Limitations</th>
     </tr>
   </thead>
   <tbody></tbody>
@@ -44,6 +50,7 @@ async function loadResults() {
       const classical = b.classical_baseline?.accuracy ?? 'N/A';
       const quantum = b.quantum_model?.accuracy ?? 'N/A';
       const delta = b.delta_vs_classical ?? 'N/A';
+      const limitations = (b.limitations || []).join('; ');
 
       tr.innerHTML = `
         <td>${b.dataset}</td>
@@ -51,6 +58,7 @@ async function loadResults() {
         <td>${quantum}</td>
         <td>${delta}</td>
         <td>${b.claim_status}</td>
+        <td>${limitations}</td>
       `;
 
       tbody.appendChild(tr);

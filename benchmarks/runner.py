@@ -10,6 +10,7 @@ from typing import Any
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 LEADERBOARD_PATH = Path(__file__).resolve().parent / "leaderboard.json"
+REPO_VERSION = "v1.0.0"
 
 
 def _safe_float(x: Any) -> float | None:
@@ -62,7 +63,7 @@ def update_leaderboard(results: list[dict[str, Any]]) -> dict[str, Any]:
         return _safe_float(q) or 0.0
 
     leaderboard = {
-        "repo_version": "v0.3.0",
+        "repo_version": REPO_VERSION,
         "principle": "Every QML experiment must include a classical baseline.",
         "benchmarks": sorted(results, key=q_acc, reverse=True),
     }

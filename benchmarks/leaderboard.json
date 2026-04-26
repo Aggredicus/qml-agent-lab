@@ -1,5 +1,20 @@
 {
-  "repo_version": "v0.2.0",
+  "repo_version": "v1.0.0",
   "principle": "Every QML experiment must include a classical baseline.",
-  "benchmarks": []
+  "benchmarks": [
+    {
+      "dataset": "moons",
+      "classical_baseline": {"accuracy": 0.9},
+      "quantum_model": {"accuracy": 0.7},
+      "delta_vs_classical": -0.2,
+      "claim_status": "quantum_underperforms"
+    },
+    {
+      "dataset": "iris",
+      "classical_baseline": {"accuracy": 0.88},
+      "quantum_model": {"accuracy": 0.6},
+      "delta_vs_classical": -0.28,
+      "claim_status": "quantum_underperforms"
+    }
+  ]
 }

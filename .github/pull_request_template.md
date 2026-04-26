@@ -22,6 +22,17 @@ Describe what checks you ran (runner, validation script, etc.).
 ## Failure Modes
 Describe potential weaknesses or risks.
 
+## Contribution Value Rubric (self-assessment)
+Score each 0–2:
+
+- Scientific Value: 
+- Reproducibility: 
+- Baseline Integrity: 
+- Claim Discipline: 
+- Maintainability: 
+
+Total Score: 
+
 ## Dependency Changes
 - [ ] No new dependencies
 - [ ] Added dependencies (justify below)

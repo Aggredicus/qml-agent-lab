@@ -13,6 +13,19 @@ Link or include your `agent_contributions` packet:
 (paste JSON or file path here)
 ```
 
+## Scientific Value
+Explain why this contribution matters.
+
+## Validation Performed
+Describe what checks you ran (runner, validation script, etc.).
+
+## Failure Modes
+Describe potential weaknesses or risks.
+
+## Dependency Changes
+- [ ] No new dependencies
+- [ ] Added dependencies (justify below)
+
 ## Checklist
 
 - [ ] Classical baseline included
@@ -22,19 +35,6 @@ Link or include your `agent_contributions` packet:
 - [ ] No unsupported quantum advantage claims
 - [ ] Small, focused change
 
-## Summary
-
-Describe what this PR does and why it matters.
-
-## Validation
-
-Commands run:
-
-```bash
-python benchmarks/runner.py
-python mcp/server.py get_results
-```
-
 ## Notes
 
-Any risks, limitations, or follow-up work.
+Any additional context for reviewers.

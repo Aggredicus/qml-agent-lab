@@ -1,6 +1,6 @@
 {
   "repo": "qml-agent-lab",
-  "version": "v0.2.0",
+  "version": "v1.0.0",
   "purpose": "Agent-executable QML benchmark lab",
   "principles": [
     "Every QML experiment must include a classical baseline",

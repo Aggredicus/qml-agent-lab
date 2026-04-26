@@ -18,7 +18,16 @@
     "goal": {"type": "string"},
     "files_changed": {"type": "array", "items": {"type": "string"}},
     "classical_baseline_included": {"type": "boolean"},
-    "claim_status": {"type": "string"},
+    "claim_status": {
+      "type": "string",
+      "enum": [
+        "quantum_underperforms",
+        "quantum_matches_classical",
+        "quantum_outperforms_classical",
+        "quantum_not_run",
+        "not_applicable"
+      ]
+    },
     "summary": {"type": "string"},
     "human_review_required": {"type": "boolean"}
   }

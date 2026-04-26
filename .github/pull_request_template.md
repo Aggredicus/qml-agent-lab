@@ -23,15 +23,27 @@ Describe what checks you ran (runner, validation script, etc.).
 Describe potential weaknesses or risks.
 
 ## Contribution Value Rubric (self-assessment)
-Score each 0–2:
+Score each 0–2 AND justify briefly:
 
-- Scientific Value: 
-- Reproducibility: 
-- Baseline Integrity: 
-- Claim Discipline: 
-- Maintainability: 
+- Scientific Value:
+  - Justification:
+- Reproducibility:
+  - Justification:
+- Baseline Integrity:
+  - Justification:
+- Claim Discipline:
+  - Justification:
+- Maintainability:
+  - Justification:
 
-Total Score: 
+Total Score:
+
+## Confidence in Score (0–1)
+How confident are you that your scoring is accurate?
+
+## Reviewer Section (to be filled during review)
+- Reviewer Adjusted Score:
+- Reviewer Notes:
 
 ## Dependency Changes
 - [ ] No new dependencies

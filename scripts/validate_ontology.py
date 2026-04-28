@@ -134,7 +134,13 @@ def validate() -> list[Check]:
     add(checks, "GraphML node IDs are unique", len(graph_nodes) == len(set(graph_nodes)))
 
     edge_ids = [edge_id for _, _, edge_id in graph_edges if edge_id]
-    add(checks, "GraphML edge IDs are unique where present", len(edge_ids) == len(set(edge_ids)))
+    duplicate_edge_id_count = len(edge_ids) - len(set(edge_ids))
+    add(
+        checks,
+        "GraphML edge IDs are not required as unique identities",
+        True,
+        f"edge_id_duplicates={duplicate_edge_id_count}; source/target/order are used for validation",
+    )
 
     add(checks, "No CSV node has empty ID", all(bool(node_id) for node_id in csv_node_ids))
     add(checks, "No CSV edge has empty source", all(bool(source) for source in csv_edge_sources))

@@ -1,110 +1,1952 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
-  <key id="type" for="node" attr.name="type" attr.type="string"/>
-  <key id="label" for="node" attr.name="label" attr.type="string"/>
-  <key id="description" for="node" attr.name="description" attr.type="string"/>
-  <key id="relationship" for="edge" attr.name="relationship" attr.type="string"/>
-  <key id="confidence" for="edge" attr.name="confidence" attr.type="double"/>
-  <key id="notes" for="edge" attr.name="notes" attr.type="string"/>
-  <graph id="qml_agent_lab_governance_ontology" edgedefault="directed">
-    <node id="repo:qml-agent-lab"><data key="type">repository</data><data key="label">qml-agent-lab</data><data key="description">Root repository for agent-assisted QML benchmarking.</data></node>
-    <node id="principle:classical_baseline_required"><data key="type">principle</data><data key="label">Classical baseline required</data><data key="description">Every QML experiment must include a classical baseline.</data></node>
-    <node id="principle:no_unsupported_quantum_advantage"><data key="type">principle</data><data key="label">No unsupported quantum advantage claims</data><data key="description">Claims must be proportional to evidence.</data></node>
-    <node id="principle:small_reviewable_changes"><data key="type">principle</data><data key="label">Small reviewable changes</data><data key="description">Avoid large rewrites, dependency sprawl, and hidden complexity.</data></node>
-    <node id="file:README.md"><data key="type">file</data><data key="label">README.md</data><data key="description">Project overview and contribution loop.</data></node>
-    <node id="file:AGENT.md"><data key="type">file</data><data key="label">AGENT.md</data><data key="description">Agent operating laws and role definitions.</data></node>
-    <node id="file:machine_index.json"><data key="type">file</data><data key="label">machine_index.json</data><data key="description">Machine-readable repo index, entrypoints, experiments, and schemas.</data></node>
-    <node id="file:TASK_BOARD.md"><data key="type">file</data><data key="label">TASK_BOARD.md</data><data key="description">Human and AI agent Kanban board.</data></node>
-    <node id="file:NEXT_AGENT_STEP.md"><data key="type">file</data><data key="label">NEXT_AGENT_STEP.md</data><data key="description">New-agent onboarding and next-step sequence.</data></node>
-    <node id="file:CONTRIBUTION_LOG.md"><data key="type">file</data><data key="label">CONTRIBUTION_LOG.md</data><data key="description">Readable project memory and reputation tracking.</data></node>
-    <node id="dir:agents"><data key="type">directory</data><data key="label">agents/</data><data key="description">Agent role definitions.</data></node>
-    <node id="dir:templates"><data key="type">directory</data><data key="label">templates/</data><data key="description">Reusable experiment templates.</data></node>
-    <node id="dir:examples"><data key="type">directory</data><data key="label">examples/</data><data key="description">Runnable examples and stubs.</data></node>
-    <node id="dir:benchmarks"><data key="type">directory</data><data key="label">benchmarks/</data><data key="description">Benchmark fixtures, runner, leaderboard, and results.</data></node>
-    <node id="dir:mcp"><data key="type">directory</data><data key="label">mcp/</data><data key="description">Lightweight local agent command interface.</data></node>
-    <node id="dir:docs"><data key="type">directory</data><data key="label">docs/</data><data key="description">Governance, methodology, policy, and review docs.</data></node>
-    <node id="dir:scripts"><data key="type">directory</data><data key="label">scripts/</data><data key="description">Validation and helper scripts.</data></node>
-    <node id="dir:tasks"><data key="type">directory</data><data key="label">tasks/</data><data key="description">Task definitions.</data></node>
-    <node id="dir:agent_contributions"><data key="type">directory</data><data key="label">agent_contributions/</data><data key="description">Structured contribution packets.</data></node>
-    <node id="dir:ontology"><data key="type">directory</data><data key="label">ontology/</data><data key="description">Agent governance ontology artifacts.</data></node>
-    <node id="agent:qml_researcher"><data key="type">agent_role</data><data key="label">QML Researcher Agent</data><data key="description">Researches QML methods, papers, frameworks, risks, and uncertainty.</data></node>
-    <node id="agent:qml_architect"><data key="type">agent_role</data><data key="label">QML Architect Agent</data><data key="description">Designs experiments, circuits, models, feature maps, and framework choices.</data></node>
-    <node id="agent:classical_baseline_engineer"><data key="type">agent_role</data><data key="label">Classical Baseline Engineer</data><data key="description">Creates simple and strong classical baselines before QML candidates are interpreted.</data></node>
-    <node id="agent:experiment_engineer"><data key="type">agent_role</data><data key="label">Experiment Engineer</data><data key="description">Implements runnable scripts and small code changes.</data></node>
-    <node id="agent:evaluator"><data key="type">agent_role</data><data key="label">Evaluator Agent</data><data key="description">Checks fairness, reproducibility, metrics, leakage, and baseline inclusion.</data></node>
-    <node id="agent:ethics_claims_reviewer"><data key="type">agent_role</data><data key="label">Ethics &amp; Claims Reviewer</data><data key="description">Weakens unsupported claims and enforces limitation statements.</data></node>
-    <node id="agent:documentation_agent"><data key="type">agent_role</data><data key="label">Documentation Agent</data><data key="description">Maintains README, docs, templates, task board, model cards, and reports.</data></node>
-    <node id="agent:maintainer_human_reviewer"><data key="type">agent_role</data><data key="label">Maintainer / Human Reviewer</data><data key="description">Approves governance changes, risky changes, and reputation updates.</data></node>
-    <node id="workflow:contribution_loop"><data key="type">workflow</data><data key="label">Contribution Loop</data><data key="description">Read guidance, choose small task, create packet, validate, PR, review, log.</data></node>
-    <node id="workflow:benchmark_loop"><data key="type">workflow</data><data key="label">Benchmark Loop</data><data key="description">Plan, baseline, QML candidate, evaluate, report, review claims.</data></node>
-    <node id="workflow:review_loop"><data key="type">workflow</data><data key="label">Review Loop</data><data key="description">Self-assessment, reviewer score, reputation delta, contribution log.</data></node>
-    <node id="gate:baseline_integrity"><data key="type">review_gate</data><data key="label">Baseline Integrity Gate</data><data key="description">Classical baseline and fair comparison required.</data></node>
-    <node id="gate:claims_discipline"><data key="type">review_gate</data><data key="label">Claims Discipline Gate</data><data key="description">Claims must match data and limitations.</data></node>
-    <node id="gate:dependency_review"><data key="type">review_gate</data><data key="label">Dependency Review Gate</data><data key="description">Large dependencies require explicit justification.</data></node>
-    <node id="gate:human_approval"><data key="type">review_gate</data><data key="label">Human Approval Gate</data><data key="description">Prevents auto-merge and uncontrolled loops.</data></node>
-    <node id="gate:validation"><data key="type">review_gate</data><data key="label">Validation Gate</data><data key="description">Run local validation scripts and benchmark aggregation checks.</data></node>
-    <node id="risk:quantum_hype"><data key="type">risk</data><data key="label">Quantum Hype</data><data key="description">Overstating toy benchmark results.</data></node>
-    <node id="risk:missing_baseline"><data key="type">risk</data><data key="label">Missing Baseline</data><data key="description">QML result without classical comparator.</data></node>
-    <node id="risk:benchmark_gaming"><data key="type">risk</data><data key="label">Benchmark Gaming</data><data key="description">Optimizing scores without scientific value.</data></node>
-    <node id="risk:dependency_bloat"><data key="type">risk</data><data key="label">Dependency Bloat</data><data key="description">Heavy unnecessary packages and framework sprawl.</data></node>
-    <node id="risk:irreproducible_results"><data key="type">risk</data><data key="label">Irreproducible Results</data><data key="description">Missing seed, split, metrics, backend, or environment.</data></node>
-    <node id="risk:uncontrolled_automation"><data key="type">risk</data><data key="label">Uncontrolled Automation</data><data key="description">Auto-run benchmarks, auto-merge, or recursive agent loops.</data></node>
-    <node id="doc:qml_claims_policy"><data key="type">policy_doc</data><data key="label">docs/qml_claims_policy.md</data><data key="description">Allowed/disallowed claims and claim status values.</data></node>
-    <node id="doc:benchmark_methodology"><data key="type">policy_doc</data><data key="label">docs/benchmark_methodology.md</data><data key="description">Fair comparison rules.</data></node>
-    <node id="doc:contribution_value_rubric"><data key="type">policy_doc</data><data key="label">docs/contribution_value_rubric.md</data><data key="description">Contribution scoring rubric.</data></node>
-    <node id="script:validate_repo"><data key="type">script</data><data key="label">scripts/validate_repo.py</data><data key="description">Validates repo benchmark and contribution structure.</data></node>
-    <node id="script:benchmark_runner"><data key="type">script</data><data key="label">benchmarks/runner.py</data><data key="description">Aggregates and validates benchmark results.</data></node>
-    <node id="script:mcp_server"><data key="type">script</data><data key="label">mcp/server.py</data><data key="description">Local command interface.</data></node>
-    <node id="schema:experiment_result"><data key="type">schema</data><data key="label">schemas/experiment_result.schema.json</data><data key="description">Benchmark result schema.</data></node>
-    <node id="artifact:leaderboard"><data key="type">artifact</data><data key="label">benchmarks/leaderboard.json</data><data key="description">Benchmark leaderboard.</data></node>
-    <edge id="e0" source="repo:qml-agent-lab" target="file:README.md"><data key="relationship">contains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e1" source="repo:qml-agent-lab" target="file:AGENT.md"><data key="relationship">contains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e2" source="repo:qml-agent-lab" target="file:machine_index.json"><data key="relationship">contains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e3" source="repo:qml-agent-lab" target="file:TASK_BOARD.md"><data key="relationship">contains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e4" source="repo:qml-agent-lab" target="file:NEXT_AGENT_STEP.md"><data key="relationship">contains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e5" source="repo:qml-agent-lab" target="file:CONTRIBUTION_LOG.md"><data key="relationship">contains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e6" source="file:AGENT.md" target="principle:classical_baseline_required"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e7" source="file:AGENT.md" target="principle:no_unsupported_quantum_advantage"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e8" source="file:AGENT.md" target="principle:small_reviewable_changes"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e9" source="file:AGENT.md" target="agent:qml_researcher"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e10" source="file:AGENT.md" target="agent:qml_architect"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e11" source="file:AGENT.md" target="agent:classical_baseline_engineer"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e12" source="file:AGENT.md" target="agent:experiment_engineer"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e13" source="file:AGENT.md" target="agent:evaluator"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e14" source="file:AGENT.md" target="agent:ethics_claims_reviewer"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e15" source="file:AGENT.md" target="agent:documentation_agent"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e16" source="file:machine_index.json" target="script:benchmark_runner"><data key="relationship">declares_entrypoint</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e17" source="file:machine_index.json" target="script:mcp_server"><data key="relationship">declares_entrypoint</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e18" source="file:machine_index.json" target="schema:experiment_result"><data key="relationship">declares_schema</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e19" source="file:TASK_BOARD.md" target="workflow:contribution_loop"><data key="relationship">guides</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e20" source="file:NEXT_AGENT_STEP.md" target="workflow:contribution_loop"><data key="relationship">guides</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e21" source="file:CONTRIBUTION_LOG.md" target="workflow:review_loop"><data key="relationship">records</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e22" source="doc:qml_claims_policy" target="gate:claims_discipline"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e23" source="doc:benchmark_methodology" target="gate:baseline_integrity"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e24" source="doc:contribution_value_rubric" target="workflow:review_loop"><data key="relationship">scores</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e25" source="script:validate_repo" target="gate:validation"><data key="relationship">implements</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e26" source="script:benchmark_runner" target="artifact:leaderboard"><data key="relationship">produces</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e27" source="agent:classical_baseline_engineer" target="gate:baseline_integrity"><data key="relationship">owns</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e28" source="agent:evaluator" target="gate:validation"><data key="relationship">owns</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e29" source="agent:evaluator" target="doc:benchmark_methodology"><data key="relationship">enforces</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e30" source="agent:ethics_claims_reviewer" target="gate:claims_discipline"><data key="relationship">owns</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e31" source="agent:documentation_agent" target="file:README.md"><data key="relationship">maintains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e32" source="agent:documentation_agent" target="file:TASK_BOARD.md"><data key="relationship">maintains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e33" source="agent:documentation_agent" target="file:NEXT_AGENT_STEP.md"><data key="relationship">maintains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e34" source="agent:maintainer_human_reviewer" target="gate:human_approval"><data key="relationship">owns</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e35" source="agent:maintainer_human_reviewer" target="file:CONTRIBUTION_LOG.md"><data key="relationship">updates</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e36" source="agent:qml_researcher" target="agent:qml_architect"><data key="relationship">informs</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e37" source="agent:qml_architect" target="agent:experiment_engineer"><data key="relationship">hands_off_to</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e38" source="agent:experiment_engineer" target="agent:evaluator"><data key="relationship">hands_off_to</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e39" source="agent:evaluator" target="agent:ethics_claims_reviewer"><data key="relationship">hands_off_to</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e40" source="agent:ethics_claims_reviewer" target="agent:maintainer_human_reviewer"><data key="relationship">hands_off_to</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e41" source="principle:classical_baseline_required" target="gate:baseline_integrity"><data key="relationship">requires</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e42" source="principle:no_unsupported_quantum_advantage" target="gate:claims_discipline"><data key="relationship">requires</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e43" source="risk:missing_baseline" target="gate:baseline_integrity"><data key="relationship">mitigated_by</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e44" source="risk:quantum_hype" target="gate:claims_discipline"><data key="relationship">mitigated_by</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e45" source="risk:benchmark_gaming" target="workflow:review_loop"><data key="relationship">mitigated_by</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e46" source="risk:dependency_bloat" target="gate:dependency_review"><data key="relationship">mitigated_by</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e47" source="risk:irreproducible_results" target="gate:validation"><data key="relationship">mitigated_by</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-    <edge id="e48" source="risk:uncontrolled_automation" target="gate:human_approval"><data key="relationship">mitigated_by</data><data key="confidence">1.0</data><data key="notes"></data></edge>
-  </graph>
-</graphml>
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d13" for="edge" attr.name="relationship" attr.type="string"/>
+<key id="d12" for="edge" attr.name="notes" attr.type="string"/>
+<key id="d11" for="edge" attr.name="confidence" attr.type="string"/>
+<key id="d10" for="node" attr.name="owner_agent" attr.type="string"/>
+<key id="d9" for="node" attr.name="path" attr.type="string"/>
+<key id="d8" for="node" attr.name="file_type" attr.type="string"/>
+<key id="d7" for="node" attr.name="review_required" attr.type="string"/>
+<key id="d6" for="node" attr.name="risk_level" attr.type="string"/>
+<key id="d5" for="node" attr.name="state" attr.type="string"/>
+<key id="d4" for="node" attr.name="version" attr.type="string"/>
+<key id="d3" for="node" attr.name="url" attr.type="string"/>
+<key id="d2" for="node" attr.name="description" attr.type="string"/>
+<key id="d1" for="node" attr.name="label" attr.type="string"/>
+<key id="d0" for="node" attr.name="node_type" attr.type="string"/>
+<graph edgedefault="directed"><node id="repo:qml-agent-lab">
+  <data key="d0">repository</data>
+  <data key="d1">qml-agent-lab</data>
+  <data key="d2">Agent-first research environment for Quantum Machine Learning with reproducible benchmarks, enforced classical baselines, honest performance reporting, structured contribution workflows, and grounded evaluation/reputation tracking.</data>
+  <data key="d3">https://github.com/Aggredicus/qml-agent-lab/tree/main</data>
+  <data key="d4">v1.0.0</data>
+  <data key="d5">Stable, community-ready</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="dir:agents">
+  <data key="d0">directory</data>
+  <data key="d1">agents</data>
+  <data key="d2">Agent role definitions</data>
+  <data key="d7">false</data>
+  <data key="d6">low</data>
+</node>
+<node id="dir:templates">
+  <data key="d0">directory</data>
+  <data key="d1">templates</data>
+  <data key="d2">Reusable experiment and reporting templates</data>
+  <data key="d7">false</data>
+  <data key="d6">low</data>
+</node>
+<node id="dir:examples">
+  <data key="d0">directory</data>
+  <data key="d1">examples</data>
+  <data key="d2">Runnable QML/classical scripts</data>
+  <data key="d7">false</data>
+  <data key="d6">low</data>
+</node>
+<node id="dir:benchmarks">
+  <data key="d0">directory</data>
+  <data key="d1">benchmarks</data>
+  <data key="d2">Verified benchmark fixtures and runner</data>
+  <data key="d7">false</data>
+  <data key="d6">low</data>
+</node>
+<node id="dir:mcp">
+  <data key="d0">directory</data>
+  <data key="d1">mcp</data>
+  <data key="d2">Local agent command interface</data>
+  <data key="d7">false</data>
+  <data key="d6">low</data>
+</node>
+<node id="dir:agent_contributions">
+  <data key="d0">directory</data>
+  <data key="d1">agent_contributions</data>
+  <data key="d2">Structured contribution packets</data>
+  <data key="d7">false</data>
+  <data key="d6">low</data>
+</node>
+<node id="dir:scripts">
+  <data key="d0">directory</data>
+  <data key="d1">scripts</data>
+  <data key="d2">Validation and helper tools</data>
+  <data key="d7">false</data>
+  <data key="d6">low</data>
+</node>
+<node id="dir:docs">
+  <data key="d0">directory</data>
+  <data key="d1">docs</data>
+  <data key="d2">Governance, rubric and review systems</data>
+  <data key="d7">false</data>
+  <data key="d6">low</data>
+</node>
+<node id="dir:tasks">
+  <data key="d0">directory</data>
+  <data key="d1">tasks</data>
+  <data key="d2">Task specifications</data>
+  <data key="d7">false</data>
+  <data key="d6">low</data>
+</node>
+<node id="dir:schemas">
+  <data key="d0">directory</data>
+  <data key="d1">schemas</data>
+  <data key="d2">Machine-readable schemas</data>
+  <data key="d7">false</data>
+  <data key="d6">low</data>
+</node>
+<node id="file:README.md">
+  <data key="d0">file</data>
+  <data key="d8">documentation</data>
+  <data key="d1">README.md</data>
+  <data key="d9">README.md</data>
+  <data key="d2">Root overview, structure, contribution loop, validation and guardrails</data>
+  <data key="d10">DocumentationAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:AGENT.md">
+  <data key="d0">file</data>
+  <data key="d8">governance</data>
+  <data key="d1">AGENT.md</data>
+  <data key="d9">AGENT.md</data>
+  <data key="d2">Full agent operating instructions, core laws, agent roles, workflow and PR checklist</data>
+  <data key="d10">RepoStewardAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:machine_index.json">
+  <data key="d0">file</data>
+  <data key="d8">machine_index</data>
+  <data key="d1">machine_index.json</data>
+  <data key="d9">machine_index.json</data>
+  <data key="d2">Machine-readable repo summary, entrypoints, experiments, schemas</data>
+  <data key="d10">RepoStewardAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:TASK_BOARD.md">
+  <data key="d0">file</data>
+  <data key="d8">governance</data>
+  <data key="d1">TASK_BOARD.md</data>
+  <data key="d9">TASK_BOARD.md</data>
+  <data key="d2">Lightweight Kanban board for humans and AI agents</data>
+  <data key="d10">TaskBoardCuratorAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:NEXT_AGENT_STEP.md">
+  <data key="d0">file</data>
+  <data key="d8">governance</data>
+  <data key="d1">NEXT_AGENT_STEP.md</data>
+  <data key="d9">NEXT_AGENT_STEP.md</data>
+  <data key="d2">Next-step sequence for agents and contributors</data>
+  <data key="d10">TaskBoardCuratorAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:CONTRIBUTION_LOG.md">
+  <data key="d0">file</data>
+  <data key="d8">governance</data>
+  <data key="d1">CONTRIBUTION_LOG.md</data>
+  <data key="d9">CONTRIBUTION_LOG.md</data>
+  <data key="d2">Readable project memory and reputation tracking</data>
+  <data key="d10">ContributionReviewerAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:agents/qml_researcher.md">
+  <data key="d0">file</data>
+  <data key="d8">agent_role</data>
+  <data key="d1">agents/qml_researcher.md</data>
+  <data key="d9">agents/qml_researcher.md</data>
+  <data key="d2">Researches QML methods, frameworks, papers, uncertainty and next actions</data>
+  <data key="d10">QMLResearcherAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:agents/qml_architect.md">
+  <data key="d0">file</data>
+  <data key="d8">agent_role</data>
+  <data key="d1">agents/qml_architect.md</data>
+  <data key="d9">agents/qml_architect.md</data>
+  <data key="d2">Designs experiment architecture, circuits, encodings, backends and framework choices</data>
+  <data key="d10">QMLArchitectAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:agents/classical_baseline_engineer.md">
+  <data key="d0">file</data>
+  <data key="d8">agent_role</data>
+  <data key="d1">agents/classical_baseline_engineer.md</data>
+  <data key="d9">agents/classical_baseline_engineer.md</data>
+  <data key="d2">Builds and validates classical baselines before QML candidates</data>
+  <data key="d10">ClassicalBaselineEngineer</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:agents/experiment_engineer.md">
+  <data key="d0">file</data>
+  <data key="d8">agent_role</data>
+  <data key="d1">agents/experiment_engineer.md</data>
+  <data key="d9">agents/experiment_engineer.md</data>
+  <data key="d2">Writes or modifies runnable experiment code with small, readable scripts</data>
+  <data key="d10">ExperimentEngineer</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:agents/evaluator.md">
+  <data key="d0">file</data>
+  <data key="d8">agent_role</data>
+  <data key="d1">agents/evaluator.md</data>
+  <data key="d9">agents/evaluator.md</data>
+  <data key="d2">Compares models under same data, split, metrics, preprocessing and leakage rules</data>
+  <data key="d10">EvaluatorAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:agents/ethics_claims_reviewer.md">
+  <data key="d0">file</data>
+  <data key="d8">agent_role</data>
+  <data key="d1">agents/ethics_claims_reviewer.md</data>
+  <data key="d9">agents/ethics_claims_reviewer.md</data>
+  <data key="d2">Reviews claims, limitations, quantum-advantage language, educational labeling</data>
+  <data key="d10">EthicsClaimsReviewer</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:agents/documentation_agent.md">
+  <data key="d0">file</data>
+  <data key="d8">agent_role</data>
+  <data key="d1">agents/documentation_agent.md</data>
+  <data key="d9">agents/documentation_agent.md</data>
+  <data key="d2">Maintains README, plans, cards, reports, tooling maps, checklists and board docs</data>
+  <data key="d10">DocumentationAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:docs/qml_claims_policy.md">
+  <data key="d0">file</data>
+  <data key="d8">policy</data>
+  <data key="d1">docs/qml_claims_policy.md</data>
+  <data key="d9">docs/qml_claims_policy.md</data>
+  <data key="d2">Allowed/disallowed QML claims and required benchmark context</data>
+  <data key="d10">EthicsClaimsReviewer</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:docs/benchmark_methodology.md">
+  <data key="d0">file</data>
+  <data key="d8">policy</data>
+  <data key="d1">docs/benchmark_methodology.md</data>
+  <data key="d9">docs/benchmark_methodology.md</data>
+  <data key="d2">Benchmark comparison rules: same dataset, split, metrics, and classical baseline</data>
+  <data key="d10">EvaluatorAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:docs/contribution_value_rubric.md">
+  <data key="d0">file</data>
+  <data key="d8">policy</data>
+  <data key="d1">docs/contribution_value_rubric.md</data>
+  <data key="d9">docs/contribution_value_rubric.md</data>
+  <data key="d2">Rubric for scientific value, reproducibility, baseline integrity, claim discipline and maintainability</data>
+  <data key="d10">ContributionReviewerAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:docs/dependency_policy.md">
+  <data key="d0">file</data>
+  <data key="d8">policy</data>
+  <data key="d1">docs/dependency_policy.md</data>
+  <data key="d9">docs/dependency_policy.md</data>
+  <data key="d2">Dependency additions and minimalism policy</data>
+  <data key="d10">RepoStewardAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:docs/pr_review_guide.md">
+  <data key="d0">file</data>
+  <data key="d8">policy</data>
+  <data key="d1">docs/pr_review_guide.md</data>
+  <data key="d9">docs/pr_review_guide.md</data>
+  <data key="d2">PR review process and expectations</data>
+  <data key="d10">ContributionReviewerAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:docs/task_board_update_protocol.md">
+  <data key="d0">file</data>
+  <data key="d8">policy</data>
+  <data key="d1">docs/task_board_update_protocol.md</data>
+  <data key="d9">docs/task_board_update_protocol.md</data>
+  <data key="d2">Rules for task-board updates</data>
+  <data key="d10">TaskBoardCuratorAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:docs/benchmark_acceptance_criteria.md">
+  <data key="d0">file</data>
+  <data key="d8">policy</data>
+  <data key="d1">docs/benchmark_acceptance_criteria.md</data>
+  <data key="d9">docs/benchmark_acceptance_criteria.md</data>
+  <data key="d2">Acceptance criteria for benchmark results</data>
+  <data key="d10">EvaluatorAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:docs/CITATION_AND_REASONING.md">
+  <data key="d0">file</data>
+  <data key="d8">policy</data>
+  <data key="d1">docs/CITATION_AND_REASONING.md</data>
+  <data key="d9">docs/CITATION_AND_REASONING.md</data>
+  <data key="d2">Citation and reasoning standard</data>
+  <data key="d10">QMLResearcherAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:docs/SOURCE_REGISTRY.md">
+  <data key="d0">file</data>
+  <data key="d8">registry</data>
+  <data key="d1">docs/SOURCE_REGISTRY.md</data>
+  <data key="d9">docs/SOURCE_REGISTRY.md</data>
+  <data key="d2">Source registry for research references</data>
+  <data key="d10">QMLResearcherAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:docs/qml_tooling_map.md">
+  <data key="d0">file</data>
+  <data key="d8">documentation</data>
+  <data key="d1">docs/qml_tooling_map.md</data>
+  <data key="d9">docs/qml_tooling_map.md</data>
+  <data key="d2">QML tooling landscape and repo-facing framework map</data>
+  <data key="d10">QMLArchitectAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:docs/quickstart.md">
+  <data key="d0">file</data>
+  <data key="d8">documentation</data>
+  <data key="d1">docs/quickstart.md</data>
+  <data key="d9">docs/quickstart.md</data>
+  <data key="d2">Quickstart instructions</data>
+  <data key="d10">DocumentationAgent</data>
+  <data key="d6">low</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:docs/sprint_checklist.md">
+  <data key="d0">file</data>
+  <data key="d8">documentation</data>
+  <data key="d1">docs/sprint_checklist.md</data>
+  <data key="d9">docs/sprint_checklist.md</data>
+  <data key="d2">Sprint checklist for work cycles</data>
+  <data key="d10">TaskBoardCuratorAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:docs/prioritized_research_questions.md">
+  <data key="d0">file</data>
+  <data key="d8">research_plan</data>
+  <data key="d1">docs/prioritized_research_questions.md</data>
+  <data key="d9">docs/prioritized_research_questions.md</data>
+  <data key="d2">Prioritized research questions</data>
+  <data key="d10">QMLResearcherAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:benchmarks/runner.py">
+  <data key="d0">file</data>
+  <data key="d8">code</data>
+  <data key="d1">benchmarks/runner.py</data>
+  <data key="d9">benchmarks/runner.py</data>
+  <data key="d2">Aggregates and validates benchmark results</data>
+  <data key="d10">BenchmarkRunnerAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:benchmarks/leaderboard.json">
+  <data key="d0">file</data>
+  <data key="d8">data</data>
+  <data key="d1">benchmarks/leaderboard.json</data>
+  <data key="d9">benchmarks/leaderboard.json</data>
+  <data key="d2">Leaderboard data derived from benchmark result fixtures</data>
+  <data key="d10">EvaluatorAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:benchmarks/results/moons_baseline.json">
+  <data key="d0">file</data>
+  <data key="d8">benchmark_result</data>
+  <data key="d1">benchmarks/results/moons_baseline.json</data>
+  <data key="d9">benchmarks/results/moons_baseline.json</data>
+  <data key="d2">Verified moons fixture: classical baseline and quantum result comparison</data>
+  <data key="d10">EvaluatorAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:benchmarks/results/iris_baseline.json">
+  <data key="d0">file</data>
+  <data key="d8">benchmark_result</data>
+  <data key="d1">benchmarks/results/iris_baseline.json</data>
+  <data key="d9">benchmarks/results/iris_baseline.json</data>
+  <data key="d2">Verified iris fixture: classical baseline and quantum result comparison</data>
+  <data key="d10">EvaluatorAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:schemas/experiment_result.schema.json">
+  <data key="d0">file</data>
+  <data key="d8">schema</data>
+  <data key="d1">schemas/experiment_result.schema.json</data>
+  <data key="d9">schemas/experiment_result.schema.json</data>
+  <data key="d2">JSON schema for benchmark result fixtures</data>
+  <data key="d10">SchemaGuardianAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:scripts/validate_repo.py">
+  <data key="d0">file</data>
+  <data key="d8">code</data>
+  <data key="d1">scripts/validate_repo.py</data>
+  <data key="d9">scripts/validate_repo.py</data>
+  <data key="d2">Repository validation script for schema, claim alignment, contribution packet structure</data>
+  <data key="d10">SchemaGuardianAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:scripts/calculate_reputation_delta.py">
+  <data key="d0">file</data>
+  <data key="d8">code</data>
+  <data key="d1">scripts/calculate_reputation_delta.py</data>
+  <data key="d9">scripts/calculate_reputation_delta.py</data>
+  <data key="d2">Calculates suggested reputation delta from review score and status</data>
+  <data key="d10">ContributionReviewerAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:scripts/archive_branch.sh">
+  <data key="d0">file</data>
+  <data key="d8">tooling</data>
+  <data key="d1">scripts/archive_branch.sh</data>
+  <data key="d9">scripts/archive_branch.sh</data>
+  <data key="d2">Helper for branch lifecycle/archive workflow</data>
+  <data key="d10">RepoStewardAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:mcp/server.py">
+  <data key="d0">file</data>
+  <data key="d8">code</data>
+  <data key="d1">mcp/server.py</data>
+  <data key="d9">mcp/server.py</data>
+  <data key="d2">Lightweight local agent command interface</data>
+  <data key="d10">MCPInterfaceAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:examples/classical_baseline_stub.py">
+  <data key="d0">file</data>
+  <data key="d8">code</data>
+  <data key="d1">examples/classical_baseline_stub.py</data>
+  <data key="d9">examples/classical_baseline_stub.py</data>
+  <data key="d2">Classical baseline starter example</data>
+  <data key="d10">ClassicalBaselineEngineer</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:examples/qiskit_quantum_kernel_stub.py">
+  <data key="d0">file</data>
+  <data key="d8">code</data>
+  <data key="d1">examples/qiskit_quantum_kernel_stub.py</data>
+  <data key="d9">examples/qiskit_quantum_kernel_stub.py</data>
+  <data key="d2">Qiskit quantum kernel starter example</data>
+  <data key="d10">QMLArchitectAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:examples/qiskit_qnn_stub.py">
+  <data key="d0">file</data>
+  <data key="d8">code</data>
+  <data key="d1">examples/qiskit_qnn_stub.py</data>
+  <data key="d9">examples/qiskit_qnn_stub.py</data>
+  <data key="d2">Qiskit QNN starter example</data>
+  <data key="d10">QMLArchitectAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:examples/pennylane_qnode_stub.py">
+  <data key="d0">file</data>
+  <data key="d8">code</data>
+  <data key="d1">examples/pennylane_qnode_stub.py</data>
+  <data key="d9">examples/pennylane_qnode_stub.py</data>
+  <data key="d2">PennyLane QNode starter example</data>
+  <data key="d10">QMLArchitectAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:examples/moons_quantum_kernel_comparison.py">
+  <data key="d0">file</data>
+  <data key="d8">code</data>
+  <data key="d1">examples/moons_quantum_kernel_comparison.py</data>
+  <data key="d9">examples/moons_quantum_kernel_comparison.py</data>
+  <data key="d2">Moons quantum/classical comparison script</data>
+  <data key="d10">ExperimentEngineer</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:examples/iris_quantum_kernel_comparison.py">
+  <data key="d0">file</data>
+  <data key="d8">code</data>
+  <data key="d1">examples/iris_quantum_kernel_comparison.py</data>
+  <data key="d9">examples/iris_quantum_kernel_comparison.py</data>
+  <data key="d2">Iris quantum/classical comparison script</data>
+  <data key="d10">ExperimentEngineer</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:examples/custom_dataset_svm_vs_qkernel.py">
+  <data key="d0">file</data>
+  <data key="d8">code</data>
+  <data key="d1">examples/custom_dataset_svm_vs_qkernel.py</data>
+  <data key="d9">examples/custom_dataset_svm_vs_qkernel.py</data>
+  <data key="d2">Custom dataset SVM vs quantum kernel comparison</data>
+  <data key="d10">ExperimentEngineer</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:templates/experiment_plan.md">
+  <data key="d0">file</data>
+  <data key="d8">template</data>
+  <data key="d1">templates/experiment_plan.md</data>
+  <data key="d9">templates/experiment_plan.md</data>
+  <data key="d2">Reusable experiment plan template</data>
+  <data key="d10">DocumentationAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:templates/dataset_card.md">
+  <data key="d0">file</data>
+  <data key="d8">template</data>
+  <data key="d1">templates/dataset_card.md</data>
+  <data key="d9">templates/dataset_card.md</data>
+  <data key="d2">Dataset card template</data>
+  <data key="d10">DocumentationAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:templates/comparison_report.md">
+  <data key="d0">file</data>
+  <data key="d8">template</data>
+  <data key="d1">templates/comparison_report.md</data>
+  <data key="d9">templates/comparison_report.md</data>
+  <data key="d2">Comparison report template</data>
+  <data key="d10">DocumentationAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:templates/qml_model_card.md">
+  <data key="d0">file</data>
+  <data key="d8">template</data>
+  <data key="d1">templates/qml_model_card.md</data>
+  <data key="d9">templates/qml_model_card.md</data>
+  <data key="d2">QML model card template</data>
+  <data key="d10">DocumentationAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:templates/benchmark_result_template.json">
+  <data key="d0">file</data>
+  <data key="d8">template</data>
+  <data key="d1">templates/benchmark_result_template.json</data>
+  <data key="d9">templates/benchmark_result_template.json</data>
+  <data key="d2">Benchmark result JSON template</data>
+  <data key="d10">SchemaGuardianAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:templates/contribution_packet_template.json">
+  <data key="d0">file</data>
+  <data key="d8">template</data>
+  <data key="d1">templates/contribution_packet_template.json</data>
+  <data key="d9">templates/contribution_packet_template.json</data>
+  <data key="d2">Contribution packet JSON template</data>
+  <data key="d10">ContributionReviewerAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="file:tasks/improve_moons_accuracy.json">
+  <data key="d0">file</data>
+  <data key="d8">task</data>
+  <data key="d1">tasks/improve_moons_accuracy.json</data>
+  <data key="d9">tasks/improve_moons_accuracy.json</data>
+  <data key="d2">Task specification for improving moons benchmark</data>
+  <data key="d10">TaskBoardCuratorAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:tasks/improve_iris_accuracy.json">
+  <data key="d0">file</data>
+  <data key="d8">task</data>
+  <data key="d1">tasks/improve_iris_accuracy.json</data>
+  <data key="d9">tasks/improve_iris_accuracy.json</data>
+  <data key="d2">Task specification for improving iris benchmark</data>
+  <data key="d10">TaskBoardCuratorAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:tasks/reduce_qnn_overfitting.json">
+  <data key="d0">file</data>
+  <data key="d8">task</data>
+  <data key="d1">tasks/reduce_qnn_overfitting.json</data>
+  <data key="d9">tasks/reduce_qnn_overfitting.json</data>
+  <data key="d2">Task specification for reducing QNN overfitting</data>
+  <data key="d10">TaskBoardCuratorAgent</data>
+  <data key="d6">medium</data>
+  <data key="d7">conditional</data>
+</node>
+<node id="file:agent_contributions/README.md">
+  <data key="d0">file</data>
+  <data key="d8">governance</data>
+  <data key="d1">agent_contributions/README.md</data>
+  <data key="d9">agent_contributions/README.md</data>
+  <data key="d2">Contribution packet instructions for agent contributions</data>
+  <data key="d10">ContributionReviewerAgent</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="agent:RepoStewardAgent">
+  <data key="d0">agent_role</data>
+  <data key="d1">RepoStewardAgent</data>
+  <data key="d2">Meta-governance owner for repo boundaries, small changes, no auto-merge/auto-run, dependency restraint, and ontology integrity.</data>
+  <data key="d6">medium</data>
+  <data key="d7">false</data>
+</node>
+<node id="agent:QMLResearcherAgent">
+  <data key="d0">agent_role</data>
+  <data key="d1">QMLResearcherAgent</data>
+  <data key="d2">Researches QML concepts, papers, official docs and frameworks with uncertainty and implementation relevance.</data>
+  <data key="d6">medium</data>
+  <data key="d7">false</data>
+</node>
+<node id="agent:QMLArchitectAgent">
+  <data key="d0">agent_role</data>
+  <data key="d1">QMLArchitectAgent</data>
+  <data key="d2">Designs QML experiment architecture, feature maps, ansatz choices, backend choices and extension points.</data>
+  <data key="d6">medium</data>
+  <data key="d7">false</data>
+</node>
+<node id="agent:ClassicalBaselineEngineer">
+  <data key="d0">agent_role</data>
+  <data key="d1">ClassicalBaselineEngineer</data>
+  <data key="d2">Creates baseline-first ML comparisons and protects against QML hype by requiring strong classical baselines.</data>
+  <data key="d6">medium</data>
+  <data key="d7">false</data>
+</node>
+<node id="agent:ExperimentEngineer">
+  <data key="d0">agent_role</data>
+  <data key="d1">ExperimentEngineer</data>
+  <data key="d2">Implements runnable scripts, small examples, graceful import errors and minimal dependency code changes.</data>
+  <data key="d6">medium</data>
+  <data key="d7">false</data>
+</node>
+<node id="agent:EvaluatorAgent">
+  <data key="d0">agent_role</data>
+  <data key="d1">EvaluatorAgent</data>
+  <data key="d2">Compares models under controlled conditions and checks leakage, metrics, splits and reproducibility.</data>
+  <data key="d6">medium</data>
+  <data key="d7">false</data>
+</node>
+<node id="agent:EthicsClaimsReviewer">
+  <data key="d0">agent_role</data>
+  <data key="d1">EthicsClaimsReviewer</data>
+  <data key="d2">Prevents unsupported quantum advantage claims, enforces limitations and aligns language to evidence.</data>
+  <data key="d6">medium</data>
+  <data key="d7">false</data>
+</node>
+<node id="agent:DocumentationAgent">
+  <data key="d0">agent_role</data>
+  <data key="d1">DocumentationAgent</data>
+  <data key="d2">Maintains README, docs, model/dataset cards, comparison reports and agent-facing explanations.</data>
+  <data key="d6">medium</data>
+  <data key="d7">false</data>
+</node>
+<node id="agent:ContributionReviewerAgent">
+  <data key="d0">agent_role</data>
+  <data key="d1">ContributionReviewerAgent</data>
+  <data key="d2">Scores contributions using rubric, reviews packets, updates reputation guidance and contribution log.</data>
+  <data key="d6">medium</data>
+  <data key="d7">false</data>
+</node>
+<node id="agent:TaskBoardCuratorAgent">
+  <data key="d0">agent_role</data>
+  <data key="d1">TaskBoardCuratorAgent</data>
+  <data key="d2">Maintains task board, next-agent instructions, task protocols and safe task proposal workflow.</data>
+  <data key="d6">medium</data>
+  <data key="d7">false</data>
+</node>
+<node id="agent:SchemaGuardianAgent">
+  <data key="d0">agent_role</data>
+  <data key="d1">SchemaGuardianAgent</data>
+  <data key="d2">Maintains schemas, validation script, benchmark result fixtures and machine-readable contract integrity.</data>
+  <data key="d6">medium</data>
+  <data key="d7">false</data>
+</node>
+<node id="agent:MCPInterfaceAgent">
+  <data key="d0">agent_role</data>
+  <data key="d1">MCPInterfaceAgent</data>
+  <data key="d2">Maintains local command interface without enabling expensive or uncontrolled automation.</data>
+  <data key="d6">medium</data>
+  <data key="d7">false</data>
+</node>
+<node id="agent:SecuritySafetyAgent">
+  <data key="d0">agent_role</data>
+  <data key="d1">SecuritySafetyAgent</data>
+  <data key="d2">Reviews secrets, automation boundaries, external calls, dependency additions and uncontrolled agent loops.</data>
+  <data key="d6">medium</data>
+  <data key="d7">false</data>
+</node>
+<node id="principle:Principle_ClassicalBaselineRequired">
+  <data key="d0">principle</data>
+  <data key="d1">ClassicalBaselineRequired</data>
+  <data key="d2">Every QML experiment must include a classical baseline.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="principle:Principle_LimitationsRequired">
+  <data key="d0">principle</data>
+  <data key="d1">LimitationsRequired</data>
+  <data key="d2">Every result must include limitations.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="principle:Principle_ClaimsMatchEvidence">
+  <data key="d0">principle</data>
+  <data key="d1">ClaimsMatchEvidence</data>
+  <data key="d2">Every claim must match the evidence; weaken any claim stronger than the data.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="principle:Principle_MetadataRequired">
+  <data key="d0">principle</data>
+  <data key="d1">MetadataRequired</data>
+  <data key="d2">Every experiment records dataset, model, backend, seed, metrics and environment.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="principle:Principle_QMLMetadataRequired">
+  <data key="d0">principle</data>
+  <data key="d1">QMLMetadataRequired</data>
+  <data key="d2">Every QML model reports qubits, circuit depth if available, shots if applicable, and backend/simulator.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="principle:Principle_SmallReadableExamples">
+  <data key="d0">principle</data>
+  <data key="d1">SmallReadableExamples</data>
+  <data key="d2">Prefer small readable examples over complex abstractions.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="principle:Principle_MinimalDependencies">
+  <data key="d0">principle</data>
+  <data key="d1">MinimalDependencies</data>
+  <data key="d2">Do not add large dependencies without explicit justification.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="principle:Principle_TargetedChanges">
+  <data key="d0">principle</data>
+  <data key="d1">TargetedChanges</data>
+  <data key="d2">Do not rewrite the whole repo when a targeted change is sufficient.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="principle:Principle_NoUncontrolledAutomation">
+  <data key="d0">principle</data>
+  <data key="d1">NoUncontrolledAutomation</data>
+  <data key="d2">Do not enable automatic benchmark execution, auto-merge, or uncontrolled agent loops without explicit human approval.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="workflow:Workflow_NewContributor">
+  <data key="d0">workflow</data>
+  <data key="d1">NewContributor</data>
+  <data key="d2">Contributor arrives -&gt; reads instructions -&gt; chooses task -&gt; creates packet -&gt; validates -&gt; PR -&gt; review -&gt; contribution log.</data>
+  <data key="d6">medium</data>
+  <data key="d7">true</data>
+</node>
+<node id="workflow:Workflow_DefaultExperiment">
+  <data key="d0">workflow</data>
+  <data key="d1">DefaultExperiment</data>
+  <data key="d2">Plan -&gt; dataset card -&gt; classical baseline -&gt; QML candidate -&gt; manual evaluation -&gt; comparison report -&gt; model card -&gt; ethics review -&gt; next steps.</data>
+  <data key="d6">medium</data>
+  <data key="d7">true</data>
+</node>
+<node id="workflow:Workflow_Validation">
+  <data key="d0">workflow</data>
+  <data key="d1">Validation</data>
+  <data key="d2">Run benchmarks/runner.py, mcp/server.py get_results, and scripts/validate_repo.py as appropriate.</data>
+  <data key="d6">medium</data>
+  <data key="d7">true</data>
+</node>
+<node id="workflow:Workflow_Review">
+  <data key="d0">workflow</data>
+  <data key="d1">Review</data>
+  <data key="d2">Review contribution packet, baseline integrity, claim status, validation commands, limitations and rubric score.</data>
+  <data key="d6">medium</data>
+  <data key="d7">true</data>
+</node>
+<node id="risk:Risk_UnsupportedQuantumAdvantageClaims">
+  <data key="d0">risk</data>
+  <data key="d1">UnsupportedQuantumAdvantageClaims</data>
+  <data key="d6">high</data>
+  <data key="d2">Claims exceed evidence, especially from small datasets or toy fixtures.</data>
+  <data key="d7">true</data>
+</node>
+<node id="risk:Risk_MissingClassicalBaseline">
+  <data key="d0">risk</data>
+  <data key="d1">MissingClassicalBaseline</data>
+  <data key="d6">high</data>
+  <data key="d2">QML result lacks comparable classical baseline.</data>
+  <data key="d7">true</data>
+</node>
+<node id="risk:Risk_BenchmarkGaming">
+  <data key="d0">risk</data>
+  <data key="d1">BenchmarkGaming</data>
+  <data key="d6">high</data>
+  <data key="d2">Optimizing reported score without preserving scientific value or reproducibility.</data>
+  <data key="d7">true</data>
+</node>
+<node id="risk:Risk_DependencySprawl">
+  <data key="d0">risk</data>
+  <data key="d1">DependencySprawl</data>
+  <data key="d6">medium</data>
+  <data key="d2">Adding heavy frameworks or build systems without clear justification.</data>
+  <data key="d7">true</data>
+</node>
+<node id="risk:Risk_UncontrolledAgentLoops">
+  <data key="d0">risk</data>
+  <data key="d1">UncontrolledAgentLoops</data>
+  <data key="d6">high</data>
+  <data key="d2">Agents auto-generate, auto-run, auto-merge or mutate board/state without approval.</data>
+  <data key="d7">true</data>
+</node>
+<node id="risk:Risk_LargeUnreviewedRewrite">
+  <data key="d0">risk</data>
+  <data key="d1">LargeUnreviewedRewrite</data>
+  <data key="d6">high</data>
+  <data key="d2">Broad rewrite reduces auditability and maintainability.</data>
+  <data key="d7">true</data>
+</node>
+<node id="gate:Gate_BaselineIntegrity">
+  <data key="d0">review_gate</data>
+  <data key="d1">BaselineIntegrity</data>
+  <data key="d2">Classical baseline present, comparable and strong enough for claim context.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="gate:Gate_Reproducibility">
+  <data key="d0">review_gate</data>
+  <data key="d1">Reproducibility</data>
+  <data key="d2">Dataset, split, seed, metrics, backend and environment recorded.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="gate:Gate_ClaimDiscipline">
+  <data key="d0">review_gate</data>
+  <data key="d1">ClaimDiscipline</data>
+  <data key="d2">Claim status and prose match recorded result and limitations.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="gate:Gate_SmallChange">
+  <data key="d0">review_gate</data>
+  <data key="d1">SmallChange</data>
+  <data key="d2">Change is small, reversible and auditable.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="gate:Gate_Validation">
+  <data key="d0">review_gate</data>
+  <data key="d1">Validation</data>
+  <data key="d2">Benchmark runner/MCP/validate_repo checks run where relevant.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<node id="gate:Gate_HumanApproval">
+  <data key="d0">review_gate</data>
+  <data key="d1">HumanApproval</data>
+  <data key="d2">Auto-run/auto-merge/uncontrolled loops require explicit human approval.</data>
+  <data key="d6">high</data>
+  <data key="d7">true</data>
+</node>
+<edge source="repo:qml-agent-lab" target="dir:agents" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="dir:templates" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="dir:examples" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="dir:benchmarks" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="dir:mcp" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="dir:agent_contributions" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="dir:scripts" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="dir:docs" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="dir:tasks" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="dir:schemas" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="file:README.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="file:AGENT.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="file:machine_index.json" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="file:TASK_BOARD.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="file:NEXT_AGENT_STEP.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="repo:qml-agent-lab" target="file:CONTRIBUTION_LOG.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:agents" target="file:agents/qml_researcher.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:agents" target="file:agents/qml_architect.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:agents" target="file:agents/classical_baseline_engineer.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:agents" target="file:agents/experiment_engineer.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:agents" target="file:agents/evaluator.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:agents" target="file:agents/ethics_claims_reviewer.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:agents" target="file:agents/documentation_agent.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:templates" target="file:templates/experiment_plan.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:templates" target="file:templates/dataset_card.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:templates" target="file:templates/comparison_report.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:templates" target="file:templates/qml_model_card.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:templates" target="file:templates/benchmark_result_template.json" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:templates" target="file:templates/contribution_packet_template.json" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:examples" target="file:examples/classical_baseline_stub.py" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:examples" target="file:examples/qiskit_quantum_kernel_stub.py" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:examples" target="file:examples/qiskit_qnn_stub.py" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:examples" target="file:examples/pennylane_qnode_stub.py" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:examples" target="file:examples/moons_quantum_kernel_comparison.py" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:examples" target="file:examples/iris_quantum_kernel_comparison.py" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:examples" target="file:examples/custom_dataset_svm_vs_qkernel.py" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:benchmarks" target="file:benchmarks/runner.py" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:benchmarks" target="file:benchmarks/leaderboard.json" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:benchmarks" target="file:benchmarks/results/moons_baseline.json" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:benchmarks" target="file:benchmarks/results/iris_baseline.json" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:mcp" target="file:mcp/server.py" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:agent_contributions" target="file:agent_contributions/README.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:scripts" target="file:scripts/validate_repo.py" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:scripts" target="file:scripts/calculate_reputation_delta.py" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:scripts" target="file:scripts/archive_branch.sh" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:docs" target="file:docs/qml_claims_policy.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:docs" target="file:docs/benchmark_methodology.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:docs" target="file:docs/contribution_value_rubric.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:docs" target="file:docs/dependency_policy.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:docs" target="file:docs/pr_review_guide.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:docs" target="file:docs/task_board_update_protocol.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:docs" target="file:docs/benchmark_acceptance_criteria.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:docs" target="file:docs/CITATION_AND_REASONING.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:docs" target="file:docs/SOURCE_REGISTRY.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:docs" target="file:docs/qml_tooling_map.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:docs" target="file:docs/quickstart.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:docs" target="file:docs/sprint_checklist.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:docs" target="file:docs/prioritized_research_questions.md" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:tasks" target="file:tasks/improve_moons_accuracy.json" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:tasks" target="file:tasks/improve_iris_accuracy.json" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:tasks" target="file:tasks/reduce_qnn_overfitting.json" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="dir:schemas" target="file:schemas/experiment_result.schema.json" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">contains</data>
+</edge>
+<edge source="file:AGENT.md" target="principle:Principle_ClassicalBaselineRequired" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines</data>
+</edge>
+<edge source="file:AGENT.md" target="principle:Principle_LimitationsRequired" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines</data>
+</edge>
+<edge source="file:AGENT.md" target="principle:Principle_ClaimsMatchEvidence" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines</data>
+</edge>
+<edge source="file:AGENT.md" target="principle:Principle_MetadataRequired" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines</data>
+</edge>
+<edge source="file:AGENT.md" target="principle:Principle_QMLMetadataRequired" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines</data>
+</edge>
+<edge source="file:AGENT.md" target="principle:Principle_SmallReadableExamples" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines</data>
+</edge>
+<edge source="file:AGENT.md" target="principle:Principle_MinimalDependencies" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines</data>
+</edge>
+<edge source="file:AGENT.md" target="principle:Principle_TargetedChanges" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines</data>
+</edge>
+<edge source="file:AGENT.md" target="principle:Principle_NoUncontrolledAutomation" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines</data>
+</edge>
+<edge source="file:AGENT.md" target="workflow:Workflow_NewContributor" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines</data>
+</edge>
+<edge source="file:AGENT.md" target="workflow:Workflow_DefaultExperiment" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines</data>
+</edge>
+<edge source="file:AGENT.md" target="workflow:Workflow_Validation" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines</data>
+</edge>
+<edge source="file:AGENT.md" target="workflow:Workflow_Review" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines</data>
+</edge>
+<edge source="file:AGENT.md" target="agent:RepoStewardAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:machine_index.json" target="agent:RepoStewardAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:machine_index.json" target="file:benchmarks/runner.py" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:machine_index.json" target="file:mcp/server.py" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:machine_index.json" target="file:schemas/experiment_result.schema.json" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:TASK_BOARD.md" target="agent:TaskBoardCuratorAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:TASK_BOARD.md" target="file:NEXT_AGENT_STEP.md" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:TASK_BOARD.md" target="file:tasks/improve_moons_accuracy.json" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:TASK_BOARD.md" target="file:tasks/improve_iris_accuracy.json" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:TASK_BOARD.md" target="file:tasks/reduce_qnn_overfitting.json" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:NEXT_AGENT_STEP.md" target="agent:TaskBoardCuratorAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:NEXT_AGENT_STEP.md" target="file:machine_index.json" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:NEXT_AGENT_STEP.md" target="file:AGENT.md" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:NEXT_AGENT_STEP.md" target="file:TASK_BOARD.md" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:NEXT_AGENT_STEP.md" target="file:agent_contributions/README.md" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:CONTRIBUTION_LOG.md" target="agent:ContributionReviewerAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:CONTRIBUTION_LOG.md" target="file:docs/contribution_value_rubric.md" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:CONTRIBUTION_LOG.md" target="file:scripts/calculate_reputation_delta.py" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:CONTRIBUTION_LOG.md" target="risk:Risk_BenchmarkGaming" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">mitigates</data>
+</edge>
+<edge source="file:agents/qml_researcher.md" target="agent:QMLResearcherAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines_role</data>
+</edge>
+<edge source="file:agents/qml_architect.md" target="agent:QMLArchitectAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines_role</data>
+</edge>
+<edge source="file:agents/classical_baseline_engineer.md" target="agent:ClassicalBaselineEngineer" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:agents/classical_baseline_engineer.md" target="agent:ClassicalBaselineEngineer" id="1">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines_role</data>
+</edge>
+<edge source="file:agents/experiment_engineer.md" target="agent:ExperimentEngineer" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines_role</data>
+</edge>
+<edge source="file:agents/evaluator.md" target="agent:EvaluatorAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:agents/evaluator.md" target="agent:EvaluatorAgent" id="1">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines_role</data>
+</edge>
+<edge source="file:agents/ethics_claims_reviewer.md" target="agent:EthicsClaimsReviewer" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:agents/ethics_claims_reviewer.md" target="agent:EthicsClaimsReviewer" id="1">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines_role</data>
+</edge>
+<edge source="file:agents/documentation_agent.md" target="agent:DocumentationAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">defines_role</data>
+</edge>
+<edge source="file:docs/qml_claims_policy.md" target="agent:EthicsClaimsReviewer" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:docs/qml_claims_policy.md" target="agent:EthicsClaimsReviewer" id="1">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">governs</data>
+</edge>
+<edge source="file:docs/qml_claims_policy.md" target="principle:Principle_ClaimsMatchEvidence" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">governs</data>
+</edge>
+<edge source="file:docs/qml_claims_policy.md" target="risk:Risk_UnsupportedQuantumAdvantageClaims" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">mitigates</data>
+</edge>
+<edge source="file:docs/benchmark_methodology.md" target="agent:EvaluatorAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:docs/benchmark_methodology.md" target="agent:EvaluatorAgent" id="1">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">governs</data>
+</edge>
+<edge source="file:docs/benchmark_methodology.md" target="principle:Principle_ClassicalBaselineRequired" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">governs</data>
+</edge>
+<edge source="file:docs/contribution_value_rubric.md" target="agent:ContributionReviewerAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:docs/contribution_value_rubric.md" target="agent:ContributionReviewerAgent" id="1">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">governs</data>
+</edge>
+<edge source="file:docs/contribution_value_rubric.md" target="file:CONTRIBUTION_LOG.md" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">governs</data>
+</edge>
+<edge source="file:docs/contribution_value_rubric.md" target="risk:Risk_BenchmarkGaming" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">mitigates</data>
+</edge>
+<edge source="file:docs/dependency_policy.md" target="principle:Principle_MinimalDependencies" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">governs</data>
+</edge>
+<edge source="file:docs/dependency_policy.md" target="agent:RepoStewardAgent" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">governs</data>
+</edge>
+<edge source="file:docs/pr_review_guide.md" target="agent:ContributionReviewerAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:docs/benchmark_acceptance_criteria.md" target="agent:EvaluatorAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:benchmarks/runner.py" target="file:benchmarks/results/moons_baseline.json" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:benchmarks/runner.py" target="file:benchmarks/results/iris_baseline.json" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:benchmarks/runner.py" target="file:benchmarks/leaderboard.json" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:benchmarks/results/moons_baseline.json" target="agent:EvaluatorAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:benchmarks/results/iris_baseline.json" target="agent:EvaluatorAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:schemas/experiment_result.schema.json" target="agent:SchemaGuardianAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:scripts/validate_repo.py" target="agent:SchemaGuardianAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:scripts/validate_repo.py" target="file:schemas/experiment_result.schema.json" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:scripts/validate_repo.py" target="file:templates/contribution_packet_template.json" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:scripts/validate_repo.py" target="file:benchmarks/results/moons_baseline.json" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:scripts/validate_repo.py" target="file:benchmarks/results/iris_baseline.json" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:mcp/server.py" target="agent:MCPInterfaceAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:mcp/server.py" target="file:machine_index.json" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:mcp/server.py" target="file:benchmarks/runner.py" id="0">
+  <data key="d11">0.85</data>
+  <data key="d12"></data>
+  <data key="d13">depends_on</data>
+</edge>
+<edge source="file:examples/moons_quantum_kernel_comparison.py" target="agent:ExperimentEngineer" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:examples/iris_quantum_kernel_comparison.py" target="agent:ExperimentEngineer" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:templates/benchmark_result_template.json" target="agent:SchemaGuardianAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:templates/contribution_packet_template.json" target="agent:ContributionReviewerAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="file:agent_contributions/README.md" target="agent:ContributionReviewerAgent" id="0">
+  <data key="d11">1.0</data>
+  <data key="d12"></data>
+  <data key="d13">requires_review_by</data>
+</edge>
+<edge source="agent:RepoStewardAgent" target="file:AGENT.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:RepoStewardAgent" target="file:machine_index.json" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:RepoStewardAgent" target="file:docs/dependency_policy.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:RepoStewardAgent" target="file:scripts/archive_branch.sh" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:RepoStewardAgent" target="risk:Risk_DependencySprawl" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">mitigates</data>
+</edge>
+<edge source="agent:RepoStewardAgent" target="gate:Gate_SmallChange" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">enforces</data>
+</edge>
+<edge source="agent:RepoStewardAgent" target="gate:Gate_HumanApproval" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">enforces</data>
+</edge>
+<edge source="agent:QMLResearcherAgent" target="file:agents/qml_researcher.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:QMLResearcherAgent" target="file:docs/CITATION_AND_REASONING.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:QMLResearcherAgent" target="file:docs/SOURCE_REGISTRY.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:QMLResearcherAgent" target="file:docs/prioritized_research_questions.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:QMLArchitectAgent" target="file:agents/qml_architect.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:QMLArchitectAgent" target="file:docs/qml_tooling_map.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:QMLArchitectAgent" target="file:examples/qiskit_quantum_kernel_stub.py" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:QMLArchitectAgent" target="file:examples/qiskit_qnn_stub.py" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:QMLArchitectAgent" target="file:examples/pennylane_qnode_stub.py" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:ClassicalBaselineEngineer" target="file:agents/classical_baseline_engineer.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:ClassicalBaselineEngineer" target="file:examples/classical_baseline_stub.py" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:ClassicalBaselineEngineer" target="risk:Risk_MissingClassicalBaseline" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">mitigates</data>
+</edge>
+<edge source="agent:ClassicalBaselineEngineer" target="gate:Gate_BaselineIntegrity" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">enforces</data>
+</edge>
+<edge source="agent:ExperimentEngineer" target="file:agents/experiment_engineer.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:ExperimentEngineer" target="file:examples/moons_quantum_kernel_comparison.py" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:ExperimentEngineer" target="file:examples/iris_quantum_kernel_comparison.py" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:ExperimentEngineer" target="file:examples/custom_dataset_svm_vs_qkernel.py" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:EvaluatorAgent" target="file:agents/evaluator.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:EvaluatorAgent" target="file:docs/benchmark_methodology.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:EvaluatorAgent" target="file:docs/benchmark_acceptance_criteria.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:EvaluatorAgent" target="file:benchmarks/leaderboard.json" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:EvaluatorAgent" target="file:benchmarks/results/moons_baseline.json" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:EvaluatorAgent" target="file:benchmarks/results/iris_baseline.json" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:EvaluatorAgent" target="gate:Gate_Reproducibility" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">enforces</data>
+</edge>
+<edge source="agent:EthicsClaimsReviewer" target="file:agents/ethics_claims_reviewer.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:EthicsClaimsReviewer" target="file:docs/qml_claims_policy.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:EthicsClaimsReviewer" target="risk:Risk_UnsupportedQuantumAdvantageClaims" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">mitigates</data>
+</edge>
+<edge source="agent:EthicsClaimsReviewer" target="gate:Gate_ClaimDiscipline" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">enforces</data>
+</edge>
+<edge source="agent:DocumentationAgent" target="file:README.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:DocumentationAgent" target="file:agents/documentation_agent.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:DocumentationAgent" target="file:docs/quickstart.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:DocumentationAgent" target="file:templates/experiment_plan.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:DocumentationAgent" target="file:templates/dataset_card.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:DocumentationAgent" target="file:templates/comparison_report.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:DocumentationAgent" target="file:templates/qml_model_card.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:ContributionReviewerAgent" target="file:CONTRIBUTION_LOG.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:ContributionReviewerAgent" target="file:docs/contribution_value_rubric.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:ContributionReviewerAgent" target="file:docs/pr_review_guide.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:ContributionReviewerAgent" target="file:scripts/calculate_reputation_delta.py" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:ContributionReviewerAgent" target="file:templates/contribution_packet_template.json" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:ContributionReviewerAgent" target="file:agent_contributions/README.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:TaskBoardCuratorAgent" target="file:TASK_BOARD.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:TaskBoardCuratorAgent" target="file:NEXT_AGENT_STEP.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:TaskBoardCuratorAgent" target="file:docs/task_board_update_protocol.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:TaskBoardCuratorAgent" target="file:docs/sprint_checklist.md" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:TaskBoardCuratorAgent" target="file:tasks/improve_moons_accuracy.json" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:TaskBoardCuratorAgent" target="file:tasks/improve_iris_accuracy.json" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:TaskBoardCuratorAgent" target="file:tasks/reduce_qnn_overfitting.json" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:SchemaGuardianAgent" target="file:schemas/experiment_result.schema.json" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:SchemaGuardianAgent" target="file:scripts/validate_repo.py" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:SchemaGuardianAgent" target="file:templates/benchmark_result_template.json" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:SchemaGuardianAgent" target="gate:Gate_Validation" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">enforces</data>
+</edge>
+<edge source="agent:MCPInterfaceAgent" target="file:mcp/server.py" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12">Primary governance ownership inferred from repo role and file responsibility.</data>
+  <data key="d13">owns</data>
+</edge>
+<edge source="agent:SecuritySafetyAgent" target="risk:Risk_UncontrolledAgentLoops" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">mitigates</data>
+</edge>
+<edge source="principle:Principle_ClassicalBaselineRequired" target="risk:Risk_MissingClassicalBaseline" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">mitigates</data>
+</edge>
+<edge source="principle:Principle_MinimalDependencies" target="risk:Risk_DependencySprawl" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">mitigates</data>
+</edge>
+<edge source="principle:Principle_TargetedChanges" target="risk:Risk_LargeUnreviewedRewrite" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">mitigates</data>
+</edge>
+<edge source="principle:Principle_NoUncontrolledAutomation" target="risk:Risk_UncontrolledAgentLoops" id="0">
+  <data key="d11">0.95</data>
+  <data key="d12"></data>
+  <data key="d13">mitigates</data>
+</edge>
+<edge source="workflow:Workflow_NewContributor" target="agent:TaskBoardCuratorAgent" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12"></data>
+  <data key="d13">routes_task</data>
+</edge>
+<edge source="workflow:Workflow_NewContributor" target="agent:ContributionReviewerAgent" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12"></data>
+  <data key="d13">reviews_packet</data>
+</edge>
+<edge source="workflow:Workflow_DefaultExperiment" target="agent:DocumentationAgent" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12"></data>
+  <data key="d13">creates_plan_and_cards</data>
+</edge>
+<edge source="workflow:Workflow_DefaultExperiment" target="agent:ClassicalBaselineEngineer" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12"></data>
+  <data key="d13">requires_baseline</data>
+</edge>
+<edge source="workflow:Workflow_DefaultExperiment" target="agent:QMLArchitectAgent" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12"></data>
+  <data key="d13">designs_qml_candidate</data>
+</edge>
+<edge source="workflow:Workflow_DefaultExperiment" target="agent:ExperimentEngineer" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12"></data>
+  <data key="d13">implements_candidate</data>
+</edge>
+<edge source="workflow:Workflow_DefaultExperiment" target="agent:EvaluatorAgent" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12"></data>
+  <data key="d13">evaluates_results</data>
+</edge>
+<edge source="workflow:Workflow_DefaultExperiment" target="agent:EthicsClaimsReviewer" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12"></data>
+  <data key="d13">reviews_claims</data>
+</edge>
+<edge source="workflow:Workflow_Validation" target="agent:SchemaGuardianAgent" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12"></data>
+  <data key="d13">runs_validation</data>
+</edge>
+<edge source="workflow:Workflow_Review" target="agent:ContributionReviewerAgent" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12"></data>
+  <data key="d13">scores_contribution</data>
+</edge>
+<edge source="workflow:Workflow_Review" target="agent:EthicsClaimsReviewer" id="0">
+  <data key="d11">0.9</data>
+  <data key="d12"></data>
+  <data key="d13">checks_claim_discipline</data>
+</edge>
+</graph></graphml>

@@ -1,32 +1,37 @@
 {
-  "repo": "Aggredicus/qml-agent-lab",
-  "ontology_name": "Agent Team Governance Ontology",
-  "version": "0.1.0",
-  "generated_for": "full agent governance ontology",
-  "node_count": 51,
-  "edge_count": 57,
+  "artifact": "qml-agent-lab full agent governance ontology",
+  "repo": {
+    "name": "qml-agent-lab",
+    "full_name": "Aggredicus/qml-agent-lab",
+    "url": "https://github.com/Aggredicus/qml-agent-lab/tree/main",
+    "version": "v1.0.0",
+    "state": "Stable, community-ready",
+    "purpose": "Agent-first research environment for Quantum Machine Learning with reproducible benchmarks, enforced classical baselines, honest performance reporting, structured contribution workflows, and grounded evaluation/reputation tracking."
+  },
   "files": [
     "AGENT_TEAM_ONTOLOGY.md",
-    "repo_agent_governance_matrix.md",
     "agent_team_governance_ontology.graphml",
-    "ontology_nodes.csv",
     "ontology_edges.csv",
-    "ontology_manifest.json"
+    "ontology_nodes.csv",
+    "repo_agent_governance_matrix.md"
   ],
-  "core_principles": [
-    "Every QML experiment must include a classical baseline",
-    "No unsupported quantum advantage claims",
-    "Keep agent changes small, reviewable, reversible, and auditable"
-  ],
-  "source_basis": [
-    "README.md",
-    "AGENT.md",
-    "machine_index.json",
-    "TASK_BOARD.md",
-    "NEXT_AGENT_STEP.md",
-    "CONTRIBUTION_LOG.md",
-    "docs/qml_claims_policy.md",
-    "docs/benchmark_methodology.md",
-    "docs/contribution_value_rubric.md"
+  "graph": {
+    "nodes": 101,
+    "edges": 214,
+    "node_types": [
+      "agent_role",
+      "directory",
+      "file",
+      "principle",
+      "repository",
+      "review_gate",
+      "risk",
+      "workflow"
+    ]
+  },
+  "limitations": [
+    "Based on files discovered through GitHub connector search and fetched core docs; not a full AST import graph.",
+    "Ownership and review routing are inferred from existing repo governance documents and file purposes.",
+    "Future version should parse all Python imports and all JSON schemas/tasks directly from a cloned checkout."
   ]
 }

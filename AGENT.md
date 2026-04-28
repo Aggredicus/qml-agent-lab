@@ -177,6 +177,33 @@ Do not use “quantum advantage” unless the experiment meets a high scientific
 - Do not add build systems, Docker, CI, package metadata, notebooks, or auto-run workflows unless requested.
 - Avoid hidden complexity.
 
+## Ontology-Aware Editing
+
+Before modifying files, agents should inspect the governance ontology using `scripts/query_ontology.py`.
+
+Agents should identify:
+
+- owner agent
+- required reviewers
+- review gates
+- risks
+- validation commands or relevant checks
+
+Example commands:
+
+```bash
+python scripts/query_ontology.py file benchmarks/results/moons_baseline.json
+python scripts/query_ontology.py reviewers examples/iris_quantum_kernel_comparison.py
+python scripts/query_ontology.py gates benchmarks/results/iris_baseline.json
+python scripts/validate_ontology.py
+```
+
+If a file is high risk or `review_required=true`, keep the change small and request review from the relevant agent role or human maintainer.
+
+The ontology does not replace judgment. It is a routing and governance map that helps agents preserve baseline-first scientific discipline, avoid unsupported claims, and choose the right validation path.
+
+If the ontology is stale, update it or flag the mismatch in the contribution packet rather than silently relying on outdated routing.
+
 ## Python Example Rules
 
 Each example should:
@@ -204,12 +231,13 @@ Before modifying code:
 
 1. Read `machine_index.json`.
 2. Read `TASK_BOARD.md` and `NEXT_AGENT_STEP.md` if present.
-3. Choose one small task.
-4. Create a contribution packet in `agent_contributions/`.
-5. Describe goal, files, risks, validation plan, and limitations.
-6. Ensure classical baseline is included.
-7. Avoid unsupported claims.
-8. Request human review.
+3. Query the ontology for any files you plan to modify.
+4. Choose one small task.
+5. Create a contribution packet in `agent_contributions/`.
+6. Describe goal, files, risks, validation plan, and limitations.
+7. Ensure classical baseline is included.
+8. Avoid unsupported claims.
+9. Request human review.
 
 Agents must not enable automatic benchmark execution, auto-merge, or uncontrolled task-generation loops.
 
@@ -228,6 +256,7 @@ Before proposing a commit or PR:
 - [ ] Are templates still reusable?
 - [ ] Is this change small enough?
 - [ ] Did we avoid unnecessary rewrites?
+- [ ] Did we query the ontology for changed files?
 - [ ] Is the repo more useful to future agents?
 - [ ] Did we avoid auto-run or auto-merge behavior?
 

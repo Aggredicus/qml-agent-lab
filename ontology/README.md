@@ -146,6 +146,47 @@ Future ontology versions can add:
 
 The current ontology is a governance ontology, not a complete AST/import dependency graph.
 
+## v1.1 Scope
+
+`v1.1` keeps one bundled GraphML file as the stable query target.
+
+This is intentional. A single bundled ontology is easier to validate, hash, query, and review while the repository establishes ontology-aware editing as a normal workflow.
+
+For `v1.1`, do not split the ontology into multiple GraphML modules unless a human maintainer explicitly requests that scope change.
+
+## v1.2 Modular Ontology Roadmap
+
+A future `v1.2` branch may introduce modular GraphML source files while continuing to generate one bundled GraphML artifact for query tools.
+
+A likely structure is:
+
+```text
+ontology/modules/
+  00_repo.graphml
+  01_files_and_directories.graphml
+  02_agents.graphml
+  03_principles.graphml
+  04_workflows.graphml
+  05_risks.graphml
+  06_review_gates.graphml
+  07_ownership.graphml
+  08_policy_links.graphml
+  09_benchmark_governance.graphml
+  10_validation_links.graphml
+```
+
+Expected v1.2 tooling:
+
+- `scripts/build_ontology_bundle.py` to merge modules into `agent_team_governance_ontology.graphml`,
+- module-aware validation for duplicate IDs and orphan edges,
+- generated CSV inventories from the merged graph,
+- manifest-controlled merge order,
+- per-module ownership and review routing.
+
+The design goal for v1.2 should be:
+
+> Small modular GraphML files are the editable source. The bundled GraphML, CSV inventories, and manifest are generated audit/query artifacts.
+
 ## Regeneration Guidance
 
 When the repo structure changes significantly:

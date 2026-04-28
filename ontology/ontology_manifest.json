@@ -3,10 +3,10 @@
   "repo": {
     "name": "qml-agent-lab",
     "full_name": "Aggredicus/qml-agent-lab",
-    "url": "https://github.com/Aggredicus/qml-agent-lab/tree/main",
-    "version": "v1.0.0",
-    "state": "Stable, community-ready",
-    "purpose": "Agent-first research environment for Quantum Machine Learning with reproducible benchmarks, enforced classical baselines, honest performance reporting, structured contribution workflows, and grounded evaluation/reputation tracking."
+    "url": "https://github.com/Aggredicus/qml-agent-lab/tree/v1.1",
+    "version": "v1.1.0",
+    "state": "Ontology-aware governance branch",
+    "purpose": "Agent-first research environment for Quantum Machine Learning with reproducible benchmarks, enforced classical baselines, honest performance reporting, structured contribution workflows, grounded evaluation/reputation tracking, and ontology-aware agent governance."
   },
   "files": [
     "AGENT_TEAM_ONTOLOGY.md",

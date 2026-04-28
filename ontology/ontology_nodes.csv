@@ -1,0 +1,54 @@
+id,type,label,description
+repo:qml-agent-lab,repository,qml-agent-lab,Root repository
+principle:classical_baseline_required,principle,Classical baseline required,Every QML experiment must include a classical baseline
+principle:no_unsupported_quantum_advantage,principle,No unsupported quantum advantage claims,Claims must match evidence
+principle:small_reviewable_changes,principle,Small reviewable changes,Avoid large rewrites and dependency sprawl
+file:README.md,file,README.md,Project overview and contribution loop
+file:AGENT.md,file,AGENT.md,Agent operating instructions
+file:machine_index.json,file,machine_index.json,Machine-readable repo index
+file:TASK_BOARD.md,file,TASK_BOARD.md,Kanban board
+file:NEXT_AGENT_STEP.md,file,NEXT_AGENT_STEP.md,Next agent sequence
+file:CONTRIBUTION_LOG.md,file,CONTRIBUTION_LOG.md,Contribution memory and reputation log
+dir:agents,directory,agents/,Agent role definitions
+dir:templates,directory,templates/,Reusable experiment templates
+dir:examples,directory,examples/,Runnable examples
+dir:benchmarks,directory,benchmarks/,Benchmark fixtures and runner
+dir:mcp,directory,mcp/,Local agent command interface
+dir:docs,directory,docs/,Governance and review docs
+dir:scripts,directory,scripts/,Validation and helper scripts
+dir:tasks,directory,tasks/,Task prompts and task definitions
+dir:agent_contributions,directory,agent_contributions/,Structured contribution packets
+dir:ontology,directory,ontology/,Agent governance ontology artifacts
+dir:schemas,directory,schemas/,JSON schemas
+agent:qml_researcher,agent_role,QML Researcher Agent,Researches QML methods and uncertainty
+agent:qml_architect,agent_role,QML Architect Agent,Designs experiments and model architecture
+agent:classical_baseline_engineer,agent_role,Classical Baseline Engineer,Creates baseline-first comparisons
+agent:experiment_engineer,agent_role,Experiment Engineer,Implements runnable code and scripts
+agent:evaluator,agent_role,Evaluator Agent,"Checks fairness, reproducibility, metrics, leakage"
+agent:ethics_claims_reviewer,agent_role,Ethics & Claims Reviewer,Weakens unsupported claims and requires limitations
+agent:documentation_agent,agent_role,Documentation Agent,"Maintains docs, templates, task board, reports"
+agent:maintainer_human_reviewer,agent_role,Maintainer / Human Reviewer,"Approves governance, reputation, and risky changes"
+workflow:contribution_loop,workflow,Contribution Loop,Select task -> packet -> validate -> PR -> review -> log
+workflow:benchmark_loop,workflow,Benchmark Loop,Plan -> baseline -> QML candidate -> evaluate -> report
+workflow:review_loop,workflow,Review Loop,Self-assessment -> reviewer score -> reputation update
+gate:baseline_integrity,review_gate,Baseline Integrity Gate,Requires classical baseline and fair comparison
+gate:claims_discipline,review_gate,Claims Discipline Gate,Claims must match evidence
+gate:dependency_review,review_gate,Dependency Review Gate,Large deps require justification
+gate:human_approval,review_gate,Human Approval Gate,Blocks auto-merge and uncontrolled loops
+gate:validation,review_gate,Validation Gate,Run local validation scripts
+risk:quantum_hype,risk,Quantum Hype,Overstating toy benchmark results
+risk:missing_baseline,risk,Missing Baseline,QML result without classical comparator
+risk:benchmark_gaming,risk,Benchmark Gaming,Optimizing scores without scientific value
+risk:dependency_bloat,risk,Dependency Bloat,Heavy unnecessary packages
+risk:irreproducible_results,risk,Irreproducible Results,"Missing seed, split, environment, or metrics"
+risk:uncontrolled_automation,risk,Uncontrolled Automation,"Auto-run benchmarks, auto-merge, agent loops"
+doc:qml_claims_policy,policy_doc,docs/qml_claims_policy.md,Allowed/disallowed claims and claim status
+doc:benchmark_methodology,policy_doc,docs/benchmark_methodology.md,Fair comparison rules
+doc:contribution_value_rubric,policy_doc,docs/contribution_value_rubric.md,Contribution scoring rubric
+script:validate_repo,script,scripts/validate_repo.py,Validates repo benchmark/contribution structure
+script:benchmark_runner,script,benchmarks/runner.py,Aggregates and validates benchmark results
+script:mcp_server,script,mcp/server.py,Local command interface
+schema:experiment_result,schema,schemas/experiment_result.schema.json,Benchmark result schema
+artifact:leaderboard,artifact,benchmarks/leaderboard.json,Benchmark leaderboard
+artifact:moons_result,benchmark_result,benchmarks/results/moons_baseline.json,Moons baseline fixture
+artifact:iris_result,benchmark_result,benchmarks/results/iris_baseline.json,Iris baseline fixture

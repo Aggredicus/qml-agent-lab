@@ -10,7 +10,7 @@ from typing import Any
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 LEADERBOARD_PATH = Path(__file__).resolve().parent / "leaderboard.json"
-REPO_VERSION = "v1.0.0"
+REPO_VERSION = "v1.1.0"
 
 
 def _safe_float(x: Any) -> float | None:

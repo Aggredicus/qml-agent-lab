@@ -1,54 +1,102 @@
-id,type,label,description
-repo:qml-agent-lab,repository,qml-agent-lab,Root repository
-principle:classical_baseline_required,principle,Classical baseline required,Every QML experiment must include a classical baseline
-principle:no_unsupported_quantum_advantage,principle,No unsupported quantum advantage claims,Claims must match evidence
-principle:small_reviewable_changes,principle,Small reviewable changes,Avoid large rewrites and dependency sprawl
-file:README.md,file,README.md,Project overview and contribution loop
-file:AGENT.md,file,AGENT.md,Agent operating instructions
-file:machine_index.json,file,machine_index.json,Machine-readable repo index
-file:TASK_BOARD.md,file,TASK_BOARD.md,Kanban board
-file:NEXT_AGENT_STEP.md,file,NEXT_AGENT_STEP.md,Next agent sequence
-file:CONTRIBUTION_LOG.md,file,CONTRIBUTION_LOG.md,Contribution memory and reputation log
-dir:agents,directory,agents/,Agent role definitions
-dir:templates,directory,templates/,Reusable experiment templates
-dir:examples,directory,examples/,Runnable examples
-dir:benchmarks,directory,benchmarks/,Benchmark fixtures and runner
-dir:mcp,directory,mcp/,Local agent command interface
-dir:docs,directory,docs/,Governance and review docs
-dir:scripts,directory,scripts/,Validation and helper scripts
-dir:tasks,directory,tasks/,Task prompts and task definitions
-dir:agent_contributions,directory,agent_contributions/,Structured contribution packets
-dir:ontology,directory,ontology/,Agent governance ontology artifacts
-dir:schemas,directory,schemas/,JSON schemas
-agent:qml_researcher,agent_role,QML Researcher Agent,Researches QML methods and uncertainty
-agent:qml_architect,agent_role,QML Architect Agent,Designs experiments and model architecture
-agent:classical_baseline_engineer,agent_role,Classical Baseline Engineer,Creates baseline-first comparisons
-agent:experiment_engineer,agent_role,Experiment Engineer,Implements runnable code and scripts
-agent:evaluator,agent_role,Evaluator Agent,"Checks fairness, reproducibility, metrics, leakage"
-agent:ethics_claims_reviewer,agent_role,Ethics & Claims Reviewer,Weakens unsupported claims and requires limitations
-agent:documentation_agent,agent_role,Documentation Agent,"Maintains docs, templates, task board, reports"
-agent:maintainer_human_reviewer,agent_role,Maintainer / Human Reviewer,"Approves governance, reputation, and risky changes"
-workflow:contribution_loop,workflow,Contribution Loop,Select task -> packet -> validate -> PR -> review -> log
-workflow:benchmark_loop,workflow,Benchmark Loop,Plan -> baseline -> QML candidate -> evaluate -> report
-workflow:review_loop,workflow,Review Loop,Self-assessment -> reviewer score -> reputation update
-gate:baseline_integrity,review_gate,Baseline Integrity Gate,Requires classical baseline and fair comparison
-gate:claims_discipline,review_gate,Claims Discipline Gate,Claims must match evidence
-gate:dependency_review,review_gate,Dependency Review Gate,Large deps require justification
-gate:human_approval,review_gate,Human Approval Gate,Blocks auto-merge and uncontrolled loops
-gate:validation,review_gate,Validation Gate,Run local validation scripts
-risk:quantum_hype,risk,Quantum Hype,Overstating toy benchmark results
-risk:missing_baseline,risk,Missing Baseline,QML result without classical comparator
-risk:benchmark_gaming,risk,Benchmark Gaming,Optimizing scores without scientific value
-risk:dependency_bloat,risk,Dependency Bloat,Heavy unnecessary packages
-risk:irreproducible_results,risk,Irreproducible Results,"Missing seed, split, environment, or metrics"
-risk:uncontrolled_automation,risk,Uncontrolled Automation,"Auto-run benchmarks, auto-merge, agent loops"
-doc:qml_claims_policy,policy_doc,docs/qml_claims_policy.md,Allowed/disallowed claims and claim status
-doc:benchmark_methodology,policy_doc,docs/benchmark_methodology.md,Fair comparison rules
-doc:contribution_value_rubric,policy_doc,docs/contribution_value_rubric.md,Contribution scoring rubric
-script:validate_repo,script,scripts/validate_repo.py,Validates repo benchmark/contribution structure
-script:benchmark_runner,script,benchmarks/runner.py,Aggregates and validates benchmark results
-script:mcp_server,script,mcp/server.py,Local command interface
-schema:experiment_result,schema,schemas/experiment_result.schema.json,Benchmark result schema
-artifact:leaderboard,artifact,benchmarks/leaderboard.json,Benchmark leaderboard
-artifact:moons_result,benchmark_result,benchmarks/results/moons_baseline.json,Moons baseline fixture
-artifact:iris_result,benchmark_result,benchmarks/results/iris_baseline.json,Iris baseline fixture
+id,node_type,label,path,file_type,owner_agent,risk_level,review_required,description
+repo:qml-agent-lab,repository,qml-agent-lab,,,,high,true,"Agent-first research environment for Quantum Machine Learning with reproducible benchmarks, enforced classical baselines, honest performance reporting, structured contribution workflows, and grounded evaluation/reputation tracking."
+dir:agents,directory,agents,,,,low,false,Agent role definitions
+dir:templates,directory,templates,,,,low,false,Reusable experiment and reporting templates
+dir:examples,directory,examples,,,,low,false,Runnable QML/classical scripts
+dir:benchmarks,directory,benchmarks,,,,low,false,Verified benchmark fixtures and runner
+dir:mcp,directory,mcp,,,,low,false,Local agent command interface
+dir:agent_contributions,directory,agent_contributions,,,,low,false,Structured contribution packets
+dir:scripts,directory,scripts,,,,low,false,Validation and helper tools
+dir:docs,directory,docs,,,,low,false,"Governance, rubric and review systems"
+dir:tasks,directory,tasks,,,,low,false,Task specifications
+dir:schemas,directory,schemas,,,,low,false,Machine-readable schemas
+file:README.md,file,README.md,README.md,documentation,DocumentationAgent,medium,conditional,"Root overview, structure, contribution loop, validation and guardrails"
+file:AGENT.md,file,AGENT.md,AGENT.md,governance,RepoStewardAgent,high,true,"Full agent operating instructions, core laws, agent roles, workflow and PR checklist"
+file:machine_index.json,file,machine_index.json,machine_index.json,machine_index,RepoStewardAgent,high,true,"Machine-readable repo summary, entrypoints, experiments, schemas"
+file:TASK_BOARD.md,file,TASK_BOARD.md,TASK_BOARD.md,governance,TaskBoardCuratorAgent,high,true,Lightweight Kanban board for humans and AI agents
+file:NEXT_AGENT_STEP.md,file,NEXT_AGENT_STEP.md,NEXT_AGENT_STEP.md,governance,TaskBoardCuratorAgent,high,true,Next-step sequence for agents and contributors
+file:CONTRIBUTION_LOG.md,file,CONTRIBUTION_LOG.md,CONTRIBUTION_LOG.md,governance,ContributionReviewerAgent,high,true,Readable project memory and reputation tracking
+file:agents/qml_researcher.md,file,agents/qml_researcher.md,agents/qml_researcher.md,agent_role,QMLResearcherAgent,medium,conditional,"Researches QML methods, frameworks, papers, uncertainty and next actions"
+file:agents/qml_architect.md,file,agents/qml_architect.md,agents/qml_architect.md,agent_role,QMLArchitectAgent,medium,conditional,"Designs experiment architecture, circuits, encodings, backends and framework choices"
+file:agents/classical_baseline_engineer.md,file,agents/classical_baseline_engineer.md,agents/classical_baseline_engineer.md,agent_role,ClassicalBaselineEngineer,high,true,Builds and validates classical baselines before QML candidates
+file:agents/experiment_engineer.md,file,agents/experiment_engineer.md,agents/experiment_engineer.md,agent_role,ExperimentEngineer,medium,conditional,"Writes or modifies runnable experiment code with small, readable scripts"
+file:agents/evaluator.md,file,agents/evaluator.md,agents/evaluator.md,agent_role,EvaluatorAgent,high,true,"Compares models under same data, split, metrics, preprocessing and leakage rules"
+file:agents/ethics_claims_reviewer.md,file,agents/ethics_claims_reviewer.md,agents/ethics_claims_reviewer.md,agent_role,EthicsClaimsReviewer,high,true,"Reviews claims, limitations, quantum-advantage language, educational labeling"
+file:agents/documentation_agent.md,file,agents/documentation_agent.md,agents/documentation_agent.md,agent_role,DocumentationAgent,medium,conditional,"Maintains README, plans, cards, reports, tooling maps, checklists and board docs"
+file:docs/qml_claims_policy.md,file,docs/qml_claims_policy.md,docs/qml_claims_policy.md,policy,EthicsClaimsReviewer,high,true,Allowed/disallowed QML claims and required benchmark context
+file:docs/benchmark_methodology.md,file,docs/benchmark_methodology.md,docs/benchmark_methodology.md,policy,EvaluatorAgent,high,true,"Benchmark comparison rules: same dataset, split, metrics, and classical baseline"
+file:docs/contribution_value_rubric.md,file,docs/contribution_value_rubric.md,docs/contribution_value_rubric.md,policy,ContributionReviewerAgent,high,true,"Rubric for scientific value, reproducibility, baseline integrity, claim discipline and maintainability"
+file:docs/dependency_policy.md,file,docs/dependency_policy.md,docs/dependency_policy.md,policy,RepoStewardAgent,medium,conditional,Dependency additions and minimalism policy
+file:docs/pr_review_guide.md,file,docs/pr_review_guide.md,docs/pr_review_guide.md,policy,ContributionReviewerAgent,high,true,PR review process and expectations
+file:docs/task_board_update_protocol.md,file,docs/task_board_update_protocol.md,docs/task_board_update_protocol.md,policy,TaskBoardCuratorAgent,medium,conditional,Rules for task-board updates
+file:docs/benchmark_acceptance_criteria.md,file,docs/benchmark_acceptance_criteria.md,docs/benchmark_acceptance_criteria.md,policy,EvaluatorAgent,high,true,Acceptance criteria for benchmark results
+file:docs/CITATION_AND_REASONING.md,file,docs/CITATION_AND_REASONING.md,docs/CITATION_AND_REASONING.md,policy,QMLResearcherAgent,medium,conditional,Citation and reasoning standard
+file:docs/SOURCE_REGISTRY.md,file,docs/SOURCE_REGISTRY.md,docs/SOURCE_REGISTRY.md,registry,QMLResearcherAgent,medium,conditional,Source registry for research references
+file:docs/qml_tooling_map.md,file,docs/qml_tooling_map.md,docs/qml_tooling_map.md,documentation,QMLArchitectAgent,medium,conditional,QML tooling landscape and repo-facing framework map
+file:docs/quickstart.md,file,docs/quickstart.md,docs/quickstart.md,documentation,DocumentationAgent,low,conditional,Quickstart instructions
+file:docs/sprint_checklist.md,file,docs/sprint_checklist.md,docs/sprint_checklist.md,documentation,TaskBoardCuratorAgent,medium,conditional,Sprint checklist for work cycles
+file:docs/prioritized_research_questions.md,file,docs/prioritized_research_questions.md,docs/prioritized_research_questions.md,research_plan,QMLResearcherAgent,medium,conditional,Prioritized research questions
+file:benchmarks/runner.py,file,benchmarks/runner.py,benchmarks/runner.py,code,BenchmarkRunnerAgent,high,true,Aggregates and validates benchmark results
+file:benchmarks/leaderboard.json,file,benchmarks/leaderboard.json,benchmarks/leaderboard.json,data,EvaluatorAgent,medium,conditional,Leaderboard data derived from benchmark result fixtures
+file:benchmarks/results/moons_baseline.json,file,benchmarks/results/moons_baseline.json,benchmarks/results/moons_baseline.json,benchmark_result,EvaluatorAgent,high,true,Verified moons fixture: classical baseline and quantum result comparison
+file:benchmarks/results/iris_baseline.json,file,benchmarks/results/iris_baseline.json,benchmarks/results/iris_baseline.json,benchmark_result,EvaluatorAgent,high,true,Verified iris fixture: classical baseline and quantum result comparison
+file:schemas/experiment_result.schema.json,file,schemas/experiment_result.schema.json,schemas/experiment_result.schema.json,schema,SchemaGuardianAgent,high,true,JSON schema for benchmark result fixtures
+file:scripts/validate_repo.py,file,scripts/validate_repo.py,scripts/validate_repo.py,code,SchemaGuardianAgent,high,true,"Repository validation script for schema, claim alignment, contribution packet structure"
+file:scripts/calculate_reputation_delta.py,file,scripts/calculate_reputation_delta.py,scripts/calculate_reputation_delta.py,code,ContributionReviewerAgent,medium,conditional,Calculates suggested reputation delta from review score and status
+file:scripts/archive_branch.sh,file,scripts/archive_branch.sh,scripts/archive_branch.sh,tooling,RepoStewardAgent,medium,conditional,Helper for branch lifecycle/archive workflow
+file:mcp/server.py,file,mcp/server.py,mcp/server.py,code,MCPInterfaceAgent,high,true,Lightweight local agent command interface
+file:examples/classical_baseline_stub.py,file,examples/classical_baseline_stub.py,examples/classical_baseline_stub.py,code,ClassicalBaselineEngineer,medium,conditional,Classical baseline starter example
+file:examples/qiskit_quantum_kernel_stub.py,file,examples/qiskit_quantum_kernel_stub.py,examples/qiskit_quantum_kernel_stub.py,code,QMLArchitectAgent,medium,conditional,Qiskit quantum kernel starter example
+file:examples/qiskit_qnn_stub.py,file,examples/qiskit_qnn_stub.py,examples/qiskit_qnn_stub.py,code,QMLArchitectAgent,medium,conditional,Qiskit QNN starter example
+file:examples/pennylane_qnode_stub.py,file,examples/pennylane_qnode_stub.py,examples/pennylane_qnode_stub.py,code,QMLArchitectAgent,medium,conditional,PennyLane QNode starter example
+file:examples/moons_quantum_kernel_comparison.py,file,examples/moons_quantum_kernel_comparison.py,examples/moons_quantum_kernel_comparison.py,code,ExperimentEngineer,high,true,Moons quantum/classical comparison script
+file:examples/iris_quantum_kernel_comparison.py,file,examples/iris_quantum_kernel_comparison.py,examples/iris_quantum_kernel_comparison.py,code,ExperimentEngineer,high,true,Iris quantum/classical comparison script
+file:examples/custom_dataset_svm_vs_qkernel.py,file,examples/custom_dataset_svm_vs_qkernel.py,examples/custom_dataset_svm_vs_qkernel.py,code,ExperimentEngineer,medium,conditional,Custom dataset SVM vs quantum kernel comparison
+file:templates/experiment_plan.md,file,templates/experiment_plan.md,templates/experiment_plan.md,template,DocumentationAgent,medium,conditional,Reusable experiment plan template
+file:templates/dataset_card.md,file,templates/dataset_card.md,templates/dataset_card.md,template,DocumentationAgent,medium,conditional,Dataset card template
+file:templates/comparison_report.md,file,templates/comparison_report.md,templates/comparison_report.md,template,DocumentationAgent,medium,conditional,Comparison report template
+file:templates/qml_model_card.md,file,templates/qml_model_card.md,templates/qml_model_card.md,template,DocumentationAgent,medium,conditional,QML model card template
+file:templates/benchmark_result_template.json,file,templates/benchmark_result_template.json,templates/benchmark_result_template.json,template,SchemaGuardianAgent,high,true,Benchmark result JSON template
+file:templates/contribution_packet_template.json,file,templates/contribution_packet_template.json,templates/contribution_packet_template.json,template,ContributionReviewerAgent,high,true,Contribution packet JSON template
+file:tasks/improve_moons_accuracy.json,file,tasks/improve_moons_accuracy.json,tasks/improve_moons_accuracy.json,task,TaskBoardCuratorAgent,medium,conditional,Task specification for improving moons benchmark
+file:tasks/improve_iris_accuracy.json,file,tasks/improve_iris_accuracy.json,tasks/improve_iris_accuracy.json,task,TaskBoardCuratorAgent,medium,conditional,Task specification for improving iris benchmark
+file:tasks/reduce_qnn_overfitting.json,file,tasks/reduce_qnn_overfitting.json,tasks/reduce_qnn_overfitting.json,task,TaskBoardCuratorAgent,medium,conditional,Task specification for reducing QNN overfitting
+file:agent_contributions/README.md,file,agent_contributions/README.md,agent_contributions/README.md,governance,ContributionReviewerAgent,high,true,Contribution packet instructions for agent contributions
+agent:RepoStewardAgent,agent_role,RepoStewardAgent,,,,medium,false,"Meta-governance owner for repo boundaries, small changes, no auto-merge/auto-run, dependency restraint, and ontology integrity."
+agent:QMLResearcherAgent,agent_role,QMLResearcherAgent,,,,medium,false,"Researches QML concepts, papers, official docs and frameworks with uncertainty and implementation relevance."
+agent:QMLArchitectAgent,agent_role,QMLArchitectAgent,,,,medium,false,"Designs QML experiment architecture, feature maps, ansatz choices, backend choices and extension points."
+agent:ClassicalBaselineEngineer,agent_role,ClassicalBaselineEngineer,,,,medium,false,Creates baseline-first ML comparisons and protects against QML hype by requiring strong classical baselines.
+agent:ExperimentEngineer,agent_role,ExperimentEngineer,,,,medium,false,"Implements runnable scripts, small examples, graceful import errors and minimal dependency code changes."
+agent:EvaluatorAgent,agent_role,EvaluatorAgent,,,,medium,false,"Compares models under controlled conditions and checks leakage, metrics, splits and reproducibility."
+agent:EthicsClaimsReviewer,agent_role,EthicsClaimsReviewer,,,,medium,false,"Prevents unsupported quantum advantage claims, enforces limitations and aligns language to evidence."
+agent:DocumentationAgent,agent_role,DocumentationAgent,,,,medium,false,"Maintains README, docs, model/dataset cards, comparison reports and agent-facing explanations."
+agent:ContributionReviewerAgent,agent_role,ContributionReviewerAgent,,,,medium,false,"Scores contributions using rubric, reviews packets, updates reputation guidance and contribution log."
+agent:TaskBoardCuratorAgent,agent_role,TaskBoardCuratorAgent,,,,medium,false,"Maintains task board, next-agent instructions, task protocols and safe task proposal workflow."
+agent:SchemaGuardianAgent,agent_role,SchemaGuardianAgent,,,,medium,false,"Maintains schemas, validation script, benchmark result fixtures and machine-readable contract integrity."
+agent:MCPInterfaceAgent,agent_role,MCPInterfaceAgent,,,,medium,false,Maintains local command interface without enabling expensive or uncontrolled automation.
+agent:SecuritySafetyAgent,agent_role,SecuritySafetyAgent,,,,medium,false,"Reviews secrets, automation boundaries, external calls, dependency additions and uncontrolled agent loops."
+principle:Principle_ClassicalBaselineRequired,principle,ClassicalBaselineRequired,,,,high,true,Every QML experiment must include a classical baseline.
+principle:Principle_LimitationsRequired,principle,LimitationsRequired,,,,high,true,Every result must include limitations.
+principle:Principle_ClaimsMatchEvidence,principle,ClaimsMatchEvidence,,,,high,true,Every claim must match the evidence; weaken any claim stronger than the data.
+principle:Principle_MetadataRequired,principle,MetadataRequired,,,,high,true,"Every experiment records dataset, model, backend, seed, metrics and environment."
+principle:Principle_QMLMetadataRequired,principle,QMLMetadataRequired,,,,high,true,"Every QML model reports qubits, circuit depth if available, shots if applicable, and backend/simulator."
+principle:Principle_SmallReadableExamples,principle,SmallReadableExamples,,,,high,true,Prefer small readable examples over complex abstractions.
+principle:Principle_MinimalDependencies,principle,MinimalDependencies,,,,high,true,Do not add large dependencies without explicit justification.
+principle:Principle_TargetedChanges,principle,TargetedChanges,,,,high,true,Do not rewrite the whole repo when a targeted change is sufficient.
+principle:Principle_NoUncontrolledAutomation,principle,NoUncontrolledAutomation,,,,high,true,"Do not enable automatic benchmark execution, auto-merge, or uncontrolled agent loops without explicit human approval."
+workflow:Workflow_NewContributor,workflow,NewContributor,,,,medium,true,Contributor arrives -> reads instructions -> chooses task -> creates packet -> validates -> PR -> review -> contribution log.
+workflow:Workflow_DefaultExperiment,workflow,DefaultExperiment,,,,medium,true,Plan -> dataset card -> classical baseline -> QML candidate -> manual evaluation -> comparison report -> model card -> ethics review -> next steps.
+workflow:Workflow_Validation,workflow,Validation,,,,medium,true,"Run benchmarks/runner.py, mcp/server.py get_results, and scripts/validate_repo.py as appropriate."
+workflow:Workflow_Review,workflow,Review,,,,medium,true,"Review contribution packet, baseline integrity, claim status, validation commands, limitations and rubric score."
+risk:Risk_UnsupportedQuantumAdvantageClaims,risk,UnsupportedQuantumAdvantageClaims,,,,high,true,"Claims exceed evidence, especially from small datasets or toy fixtures."
+risk:Risk_MissingClassicalBaseline,risk,MissingClassicalBaseline,,,,high,true,QML result lacks comparable classical baseline.
+risk:Risk_BenchmarkGaming,risk,BenchmarkGaming,,,,high,true,Optimizing reported score without preserving scientific value or reproducibility.
+risk:Risk_DependencySprawl,risk,DependencySprawl,,,,medium,true,Adding heavy frameworks or build systems without clear justification.
+risk:Risk_UncontrolledAgentLoops,risk,UncontrolledAgentLoops,,,,high,true,"Agents auto-generate, auto-run, auto-merge or mutate board/state without approval."
+risk:Risk_LargeUnreviewedRewrite,risk,LargeUnreviewedRewrite,,,,high,true,Broad rewrite reduces auditability and maintainability.
+gate:Gate_BaselineIntegrity,review_gate,BaselineIntegrity,,,,high,true,"Classical baseline present, comparable and strong enough for claim context."
+gate:Gate_Reproducibility,review_gate,Reproducibility,,,,high,true,"Dataset, split, seed, metrics, backend and environment recorded."
+gate:Gate_ClaimDiscipline,review_gate,ClaimDiscipline,,,,high,true,Claim status and prose match recorded result and limitations.
+gate:Gate_SmallChange,review_gate,SmallChange,,,,high,true,"Change is small, reversible and auditable."
+gate:Gate_Validation,review_gate,Validation,,,,high,true,Benchmark runner/MCP/validate_repo checks run where relevant.
+gate:Gate_HumanApproval,review_gate,HumanApproval,,,,high,true,Auto-run/auto-merge/uncontrolled loops require explicit human approval.

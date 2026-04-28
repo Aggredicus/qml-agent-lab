@@ -1,0 +1,32 @@
+{
+  "repo": "Aggredicus/qml-agent-lab",
+  "ontology_name": "Agent Team Governance Ontology",
+  "version": "0.1.0",
+  "generated_for": "full agent governance ontology",
+  "node_count": 51,
+  "edge_count": 57,
+  "files": [
+    "AGENT_TEAM_ONTOLOGY.md",
+    "repo_agent_governance_matrix.md",
+    "agent_team_governance_ontology.graphml",
+    "ontology_nodes.csv",
+    "ontology_edges.csv",
+    "ontology_manifest.json"
+  ],
+  "core_principles": [
+    "Every QML experiment must include a classical baseline",
+    "No unsupported quantum advantage claims",
+    "Keep agent changes small, reviewable, reversible, and auditable"
+  ],
+  "source_basis": [
+    "README.md",
+    "AGENT.md",
+    "machine_index.json",
+    "TASK_BOARD.md",
+    "NEXT_AGENT_STEP.md",
+    "CONTRIBUTION_LOG.md",
+    "docs/qml_claims_policy.md",
+    "docs/benchmark_methodology.md",
+    "docs/contribution_value_rubric.md"
+  ]
+}

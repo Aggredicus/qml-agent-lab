@@ -1,14 +1,18 @@
 {
   "repo": "qml-agent-lab",
-  "version": "v1.0.0",
-  "purpose": "Agent-executable QML benchmark lab",
+  "version": "v1.1.0",
+  "purpose": "Agent-executable QML benchmark lab with ontology-aware governance",
   "principles": [
     "Every QML experiment must include a classical baseline",
-    "No unsupported quantum advantage claims"
+    "No unsupported quantum advantage claims",
+    "Agents should query the governance ontology before modifying governed files"
   ],
   "entrypoints": {
     "benchmark_runner": "python benchmarks/runner.py",
-    "mcp": "python mcp/server.py"
+    "mcp": "python mcp/server.py",
+    "ontology_query": "python scripts/query_ontology.py",
+    "repo_validation": "python scripts/validate_repo.py",
+    "ontology_validation": "python scripts/validate_ontology.py"
   },
   "experiments": [
     "moons",
@@ -16,5 +20,11 @@
   ],
   "schemas": [
     "schemas/experiment_result.schema.json"
-  ]
+  ],
+  "ontology": {
+    "graphml": "ontology/agent_team_governance_ontology.graphml",
+    "nodes_csv": "ontology/ontology_nodes.csv",
+    "edges_csv": "ontology/ontology_edges.csv",
+    "manifest": "ontology/ontology_manifest.json"
+  }
 }

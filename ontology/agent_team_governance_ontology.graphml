@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+  <key id="type" for="node" attr.name="type" attr.type="string"/>
+  <key id="label" for="node" attr.name="label" attr.type="string"/>
+  <key id="description" for="node" attr.name="description" attr.type="string"/>
+  <key id="relationship" for="edge" attr.name="relationship" attr.type="string"/>
+  <key id="confidence" for="edge" attr.name="confidence" attr.type="double"/>
+  <key id="notes" for="edge" attr.name="notes" attr.type="string"/>
+  <graph id="qml_agent_lab_governance_ontology" edgedefault="directed">
+    <node id="repo:qml-agent-lab"><data key="type">repository</data><data key="label">qml-agent-lab</data><data key="description">Root repository for agent-assisted QML benchmarking.</data></node>
+    <node id="principle:classical_baseline_required"><data key="type">principle</data><data key="label">Classical baseline required</data><data key="description">Every QML experiment must include a classical baseline.</data></node>
+    <node id="principle:no_unsupported_quantum_advantage"><data key="type">principle</data><data key="label">No unsupported quantum advantage claims</data><data key="description">Claims must be proportional to evidence.</data></node>
+    <node id="principle:small_reviewable_changes"><data key="type">principle</data><data key="label">Small reviewable changes</data><data key="description">Avoid large rewrites, dependency sprawl, and hidden complexity.</data></node>
+    <node id="file:README.md"><data key="type">file</data><data key="label">README.md</data><data key="description">Project overview and contribution loop.</data></node>
+    <node id="file:AGENT.md"><data key="type">file</data><data key="label">AGENT.md</data><data key="description">Agent operating laws and role definitions.</data></node>
+    <node id="file:machine_index.json"><data key="type">file</data><data key="label">machine_index.json</data><data key="description">Machine-readable repo index, entrypoints, experiments, and schemas.</data></node>
+    <node id="file:TASK_BOARD.md"><data key="type">file</data><data key="label">TASK_BOARD.md</data><data key="description">Human and AI agent Kanban board.</data></node>
+    <node id="file:NEXT_AGENT_STEP.md"><data key="type">file</data><data key="label">NEXT_AGENT_STEP.md</data><data key="description">New-agent onboarding and next-step sequence.</data></node>
+    <node id="file:CONTRIBUTION_LOG.md"><data key="type">file</data><data key="label">CONTRIBUTION_LOG.md</data><data key="description">Readable project memory and reputation tracking.</data></node>
+    <node id="dir:agents"><data key="type">directory</data><data key="label">agents/</data><data key="description">Agent role definitions.</data></node>
+    <node id="dir:templates"><data key="type">directory</data><data key="label">templates/</data><data key="description">Reusable experiment templates.</data></node>
+    <node id="dir:examples"><data key="type">directory</data><data key="label">examples/</data><data key="description">Runnable examples and stubs.</data></node>
+    <node id="dir:benchmarks"><data key="type">directory</data><data key="label">benchmarks/</data><data key="description">Benchmark fixtures, runner, leaderboard, and results.</data></node>
+    <node id="dir:mcp"><data key="type">directory</data><data key="label">mcp/</data><data key="description">Lightweight local agent command interface.</data></node>
+    <node id="dir:docs"><data key="type">directory</data><data key="label">docs/</data><data key="description">Governance, methodology, policy, and review docs.</data></node>
+    <node id="dir:scripts"><data key="type">directory</data><data key="label">scripts/</data><data key="description">Validation and helper scripts.</data></node>
+    <node id="dir:tasks"><data key="type">directory</data><data key="label">tasks/</data><data key="description">Task definitions.</data></node>
+    <node id="dir:agent_contributions"><data key="type">directory</data><data key="label">agent_contributions/</data><data key="description">Structured contribution packets.</data></node>
+    <node id="dir:ontology"><data key="type">directory</data><data key="label">ontology/</data><data key="description">Agent governance ontology artifacts.</data></node>
+    <node id="agent:qml_researcher"><data key="type">agent_role</data><data key="label">QML Researcher Agent</data><data key="description">Researches QML methods, papers, frameworks, risks, and uncertainty.</data></node>
+    <node id="agent:qml_architect"><data key="type">agent_role</data><data key="label">QML Architect Agent</data><data key="description">Designs experiments, circuits, models, feature maps, and framework choices.</data></node>
+    <node id="agent:classical_baseline_engineer"><data key="type">agent_role</data><data key="label">Classical Baseline Engineer</data><data key="description">Creates simple and strong classical baselines before QML candidates are interpreted.</data></node>
+    <node id="agent:experiment_engineer"><data key="type">agent_role</data><data key="label">Experiment Engineer</data><data key="description">Implements runnable scripts and small code changes.</data></node>
+    <node id="agent:evaluator"><data key="type">agent_role</data><data key="label">Evaluator Agent</data><data key="description">Checks fairness, reproducibility, metrics, leakage, and baseline inclusion.</data></node>
+    <node id="agent:ethics_claims_reviewer"><data key="type">agent_role</data><data key="label">Ethics &amp; Claims Reviewer</data><data key="description">Weakens unsupported claims and enforces limitation statements.</data></node>
+    <node id="agent:documentation_agent"><data key="type">agent_role</data><data key="label">Documentation Agent</data><data key="description">Maintains README, docs, templates, task board, model cards, and reports.</data></node>
+    <node id="agent:maintainer_human_reviewer"><data key="type">agent_role</data><data key="label">Maintainer / Human Reviewer</data><data key="description">Approves governance changes, risky changes, and reputation updates.</data></node>
+    <node id="workflow:contribution_loop"><data key="type">workflow</data><data key="label">Contribution Loop</data><data key="description">Read guidance, choose small task, create packet, validate, PR, review, log.</data></node>
+    <node id="workflow:benchmark_loop"><data key="type">workflow</data><data key="label">Benchmark Loop</data><data key="description">Plan, baseline, QML candidate, evaluate, report, review claims.</data></node>
+    <node id="workflow:review_loop"><data key="type">workflow</data><data key="label">Review Loop</data><data key="description">Self-assessment, reviewer score, reputation delta, contribution log.</data></node>
+    <node id="gate:baseline_integrity"><data key="type">review_gate</data><data key="label">Baseline Integrity Gate</data><data key="description">Classical baseline and fair comparison required.</data></node>
+    <node id="gate:claims_discipline"><data key="type">review_gate</data><data key="label">Claims Discipline Gate</data><data key="description">Claims must match data and limitations.</data></node>
+    <node id="gate:dependency_review"><data key="type">review_gate</data><data key="label">Dependency Review Gate</data><data key="description">Large dependencies require explicit justification.</data></node>
+    <node id="gate:human_approval"><data key="type">review_gate</data><data key="label">Human Approval Gate</data><data key="description">Prevents auto-merge and uncontrolled loops.</data></node>
+    <node id="gate:validation"><data key="type">review_gate</data><data key="label">Validation Gate</data><data key="description">Run local validation scripts and benchmark aggregation checks.</data></node>
+    <node id="risk:quantum_hype"><data key="type">risk</data><data key="label">Quantum Hype</data><data key="description">Overstating toy benchmark results.</data></node>
+    <node id="risk:missing_baseline"><data key="type">risk</data><data key="label">Missing Baseline</data><data key="description">QML result without classical comparator.</data></node>
+    <node id="risk:benchmark_gaming"><data key="type">risk</data><data key="label">Benchmark Gaming</data><data key="description">Optimizing scores without scientific value.</data></node>
+    <node id="risk:dependency_bloat"><data key="type">risk</data><data key="label">Dependency Bloat</data><data key="description">Heavy unnecessary packages and framework sprawl.</data></node>
+    <node id="risk:irreproducible_results"><data key="type">risk</data><data key="label">Irreproducible Results</data><data key="description">Missing seed, split, metrics, backend, or environment.</data></node>
+    <node id="risk:uncontrolled_automation"><data key="type">risk</data><data key="label">Uncontrolled Automation</data><data key="description">Auto-run benchmarks, auto-merge, or recursive agent loops.</data></node>
+    <node id="doc:qml_claims_policy"><data key="type">policy_doc</data><data key="label">docs/qml_claims_policy.md</data><data key="description">Allowed/disallowed claims and claim status values.</data></node>
+    <node id="doc:benchmark_methodology"><data key="type">policy_doc</data><data key="label">docs/benchmark_methodology.md</data><data key="description">Fair comparison rules.</data></node>
+    <node id="doc:contribution_value_rubric"><data key="type">policy_doc</data><data key="label">docs/contribution_value_rubric.md</data><data key="description">Contribution scoring rubric.</data></node>
+    <node id="script:validate_repo"><data key="type">script</data><data key="label">scripts/validate_repo.py</data><data key="description">Validates repo benchmark and contribution structure.</data></node>
+    <node id="script:benchmark_runner"><data key="type">script</data><data key="label">benchmarks/runner.py</data><data key="description">Aggregates and validates benchmark results.</data></node>
+    <node id="script:mcp_server"><data key="type">script</data><data key="label">mcp/server.py</data><data key="description">Local command interface.</data></node>
+    <node id="schema:experiment_result"><data key="type">schema</data><data key="label">schemas/experiment_result.schema.json</data><data key="description">Benchmark result schema.</data></node>
+    <node id="artifact:leaderboard"><data key="type">artifact</data><data key="label">benchmarks/leaderboard.json</data><data key="description">Benchmark leaderboard.</data></node>
+    <edge id="e0" source="repo:qml-agent-lab" target="file:README.md"><data key="relationship">contains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e1" source="repo:qml-agent-lab" target="file:AGENT.md"><data key="relationship">contains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e2" source="repo:qml-agent-lab" target="file:machine_index.json"><data key="relationship">contains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e3" source="repo:qml-agent-lab" target="file:TASK_BOARD.md"><data key="relationship">contains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e4" source="repo:qml-agent-lab" target="file:NEXT_AGENT_STEP.md"><data key="relationship">contains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e5" source="repo:qml-agent-lab" target="file:CONTRIBUTION_LOG.md"><data key="relationship">contains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e6" source="file:AGENT.md" target="principle:classical_baseline_required"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e7" source="file:AGENT.md" target="principle:no_unsupported_quantum_advantage"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e8" source="file:AGENT.md" target="principle:small_reviewable_changes"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e9" source="file:AGENT.md" target="agent:qml_researcher"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e10" source="file:AGENT.md" target="agent:qml_architect"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e11" source="file:AGENT.md" target="agent:classical_baseline_engineer"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e12" source="file:AGENT.md" target="agent:experiment_engineer"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e13" source="file:AGENT.md" target="agent:evaluator"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e14" source="file:AGENT.md" target="agent:ethics_claims_reviewer"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e15" source="file:AGENT.md" target="agent:documentation_agent"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e16" source="file:machine_index.json" target="script:benchmark_runner"><data key="relationship">declares_entrypoint</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e17" source="file:machine_index.json" target="script:mcp_server"><data key="relationship">declares_entrypoint</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e18" source="file:machine_index.json" target="schema:experiment_result"><data key="relationship">declares_schema</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e19" source="file:TASK_BOARD.md" target="workflow:contribution_loop"><data key="relationship">guides</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e20" source="file:NEXT_AGENT_STEP.md" target="workflow:contribution_loop"><data key="relationship">guides</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e21" source="file:CONTRIBUTION_LOG.md" target="workflow:review_loop"><data key="relationship">records</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e22" source="doc:qml_claims_policy" target="gate:claims_discipline"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e23" source="doc:benchmark_methodology" target="gate:baseline_integrity"><data key="relationship">defines</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e24" source="doc:contribution_value_rubric" target="workflow:review_loop"><data key="relationship">scores</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e25" source="script:validate_repo" target="gate:validation"><data key="relationship">implements</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e26" source="script:benchmark_runner" target="artifact:leaderboard"><data key="relationship">produces</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e27" source="agent:classical_baseline_engineer" target="gate:baseline_integrity"><data key="relationship">owns</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e28" source="agent:evaluator" target="gate:validation"><data key="relationship">owns</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e29" source="agent:evaluator" target="doc:benchmark_methodology"><data key="relationship">enforces</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e30" source="agent:ethics_claims_reviewer" target="gate:claims_discipline"><data key="relationship">owns</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e31" source="agent:documentation_agent" target="file:README.md"><data key="relationship">maintains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e32" source="agent:documentation_agent" target="file:TASK_BOARD.md"><data key="relationship">maintains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e33" source="agent:documentation_agent" target="file:NEXT_AGENT_STEP.md"><data key="relationship">maintains</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e34" source="agent:maintainer_human_reviewer" target="gate:human_approval"><data key="relationship">owns</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e35" source="agent:maintainer_human_reviewer" target="file:CONTRIBUTION_LOG.md"><data key="relationship">updates</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e36" source="agent:qml_researcher" target="agent:qml_architect"><data key="relationship">informs</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e37" source="agent:qml_architect" target="agent:experiment_engineer"><data key="relationship">hands_off_to</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e38" source="agent:experiment_engineer" target="agent:evaluator"><data key="relationship">hands_off_to</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e39" source="agent:evaluator" target="agent:ethics_claims_reviewer"><data key="relationship">hands_off_to</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e40" source="agent:ethics_claims_reviewer" target="agent:maintainer_human_reviewer"><data key="relationship">hands_off_to</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e41" source="principle:classical_baseline_required" target="gate:baseline_integrity"><data key="relationship">requires</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e42" source="principle:no_unsupported_quantum_advantage" target="gate:claims_discipline"><data key="relationship">requires</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e43" source="risk:missing_baseline" target="gate:baseline_integrity"><data key="relationship">mitigated_by</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e44" source="risk:quantum_hype" target="gate:claims_discipline"><data key="relationship">mitigated_by</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e45" source="risk:benchmark_gaming" target="workflow:review_loop"><data key="relationship">mitigated_by</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e46" source="risk:dependency_bloat" target="gate:dependency_review"><data key="relationship">mitigated_by</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e47" source="risk:irreproducible_results" target="gate:validation"><data key="relationship">mitigated_by</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+    <edge id="e48" source="risk:uncontrolled_automation" target="gate:human_approval"><data key="relationship">mitigated_by</data><data key="confidence">1.0</data><data key="notes"></data></edge>
+  </graph>
+</graphml>

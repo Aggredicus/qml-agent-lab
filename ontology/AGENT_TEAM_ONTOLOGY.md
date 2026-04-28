@@ -1,108 +1,163 @@
-# Agent Team Governance Ontology
+# QML Agent Lab — Full Agent Governance Ontology
 
-Repository: `Aggredicus/qml-agent-lab`
+Repository: `Aggredicus/qml-agent-lab`  
+Ontology artifact: `agent_team_governance_ontology.graphml`  
+Generated purpose: make the repo's agent roles, files, policies, review gates, risks, workflows, and validation paths explicit as a portable GraphML knowledge graph.
 
-This document summarizes the Agent Team Governance Ontology for `qml-agent-lab`. The ontology formalizes the repository as a graph of agents, files, folders, policies, review gates, risks, workflows, tasks, benchmark artifacts, and governance constraints.
+## 1. Executive Summary
 
-The purpose is to make the repository easier for human developers and AI agents to navigate safely, improve incrementally, and review without losing the project’s core scientific discipline.
+`qml-agent-lab` is already structured as an agent-first QML research environment. Its core design principle is baseline-first and evidence-first QML experimentation: every QML experiment must include a classical baseline, every claim must match the evidence, and contributions should remain small, auditable, and reproducible.
 
-## Core Interpretation
+This ontology turns that governance model into a machine-readable graph. It is designed so Cursor, Copilot, Codex, or a future repo agent can ask questions like:
 
-`qml-agent-lab` is an agent-first research environment for quantum machine learning. Its central governance principle is:
+- Which agent owns this file?
+- Which review gate applies before changing a benchmark result?
+- Which policy mitigates unsupported quantum-advantage claims?
+- Which validation scripts must run before a contribution is proposed?
+- Which docs define the agent workflow?
 
-> Every QML experiment must include a classical baseline.
+## 2. Delivered Files
 
-The ontology treats this rule as a first-class governance node connected to benchmark files, evaluation roles, PR review rules, claim discipline, and contribution scoring.
+| File | Purpose |
+|---|---|
+| `agent_team_governance_ontology.graphml` | Full GraphML ontology for the repo. |
+| `AGENT_TEAM_ONTOLOGY.md` | Human-readable explanation of the ontology. |
+| `ontology_nodes.csv` | Flat node inventory for auditing. |
+| `ontology_edges.csv` | Flat relationship inventory for auditing. |
+| `repo_agent_governance_matrix.md` | Agent ownership, review routing, and governance gates. |
+| `ontology_manifest.json` | Machine-readable artifact manifest. |
 
-## Ontology Layers
+## 3. Node Types
 
-The ontology is organized into the following layers:
+The GraphML uses the following major node types:
 
-1. **Repository Structure Layer** — root files, folders, scripts, docs, benchmarks, examples, templates, schemas, MCP interface, tasks, and contribution packets.
-2. **Agent Role Layer** — QML Researcher, QML Architect, Classical Baseline Engineer, Experiment Engineer, Evaluator, Ethics & Claims Reviewer, Documentation Agent, and Maintainer/Human Reviewer.
-3. **Governance Principle Layer** — baseline-first rule, no unsupported quantum advantage claims, small reversible changes, manual validation, no auto-merge, and no uncontrolled agent loops.
-4. **Workflow Layer** — contribution loop, benchmark loop, review loop, reputation update loop, and next-agent sequence.
-5. **Risk Layer** — quantum hype, missing baseline, benchmark gaming, dependency bloat, unreviewed automation, overbuilt abstractions, irreproducible results, and misleading claims.
-6. **Review Gate Layer** — baseline integrity check, claims discipline check, dependency review, benchmark methodology review, contribution rubric review, and human approval.
+- `repository`
+- `directory`
+- `file`
+- `agent_role`
+- `principle`
+- `workflow`
+- `policy`
+- `risk`
+- `review_gate`
 
-## Primary Agent Roles
+## 4. Edge Relationship Types
 
-### QML Researcher Agent
+Important relationship types include:
 
-Responsible for researching QML methods, papers, frameworks, and implementation-relevant tradeoffs. This role should summarize uncertainty and recommend small next actions.
+- `contains`
+- `owns`
+- `requires_review_by`
+- `defines`
+- `defines_role`
+- `governs`
+- `depends_on`
+- `mitigates`
+- `enforces`
+- `creates_plan_and_cards`
+- `requires_baseline`
+- `designs_qml_candidate`
+- `implements_candidate`
+- `evaluates_results`
+- `reviews_claims`
+- `routes_task`
+- `reviews_packet`
+- `runs_validation`
+- `scores_contribution`
 
-### QML Architect Agent
+## 5. Recommended Agent Team
 
-Responsible for experiment design, model/circuit architecture, framework selection, feature-map choices, ansatz choices, backend decisions, and extension planning.
+| Agent | Core Responsibility |
+|---|---|
+| RepoStewardAgent | Protects repo boundaries, small changes, no auto-merge/auto-run, dependency restraint, ontology integrity. |
+| QMLResearcherAgent | Researches QML concepts, papers, official docs, uncertainty, and implementation-relevant facts. |
+| QMLArchitectAgent | Designs QML experiment architecture, feature maps, ansatz choices, backends, and extension points. |
+| ClassicalBaselineEngineer | Enforces classical baselines before QML candidates. |
+| ExperimentEngineer | Implements small runnable scripts and examples. |
+| EvaluatorAgent | Compares models under controlled conditions. |
+| EthicsClaimsReviewer | Prevents unsupported quantum advantage claims and enforces limitations. |
+| DocumentationAgent | Maintains README, docs, cards, reports, tooling maps, and checklists. |
+| ContributionReviewerAgent | Scores contributions, reviews packets, and maintains reputation guidance. |
+| TaskBoardCuratorAgent | Maintains task board, next-agent instructions, and task proposal workflow. |
+| SchemaGuardianAgent | Maintains schemas, validation scripts, result fixtures, and machine-readable contracts. |
+| MCPInterfaceAgent | Maintains the local command interface without uncontrolled automation. |
+| SecuritySafetyAgent | Reviews secrets, external calls, dependency additions, and uncontrolled agent loops. |
 
-### Classical Baseline Engineer
+## 6. Governance Interpretation
 
-Responsible for baseline-first comparison design. This agent must be invoked before treating a QML result as meaningful.
+The repo has a strong governance spine:
 
-### Experiment Engineer
+```text
+machine_index.json
+  -> tells agents entrypoints, experiments, schemas
 
-Responsible for runnable scripts and small implementation changes. This role must keep examples lightweight, readable, and graceful when optional dependencies are missing.
+AGENT.md
+  -> defines operating laws, roles, experiment workflow, PR checklist
 
-### Evaluator Agent
+TASK_BOARD.md + NEXT_AGENT_STEP.md
+  -> route contributors into small tasks
 
-Responsible for checking same dataset, same split, same metric, leakage avoidance, reproducibility, baseline inclusion, and honest comparison.
+agent_contributions/
+  -> captures contribution packets before direct edits
 
-### Ethics & Claims Reviewer
+scripts/validate_repo.py + benchmarks/runner.py + mcp/server.py
+  -> validate benchmark/result state
 
-Responsible for weakening claims that exceed evidence, preventing unsupported quantum advantage claims, and ensuring limitations are explicit.
+docs/qml_claims_policy.md + docs/benchmark_methodology.md + docs/contribution_value_rubric.md
+  -> enforce scientific honesty and review discipline
 
-### Documentation Agent
+CONTRIBUTION_LOG.md
+  -> records accepted/proposed/rejected/simulated contributions and reputation guidance
+```
 
-Responsible for README updates, templates, dataset cards, model cards, comparison reports, task board updates, sprint checklists, and contributor guidance.
+## 7. High-Risk Areas
 
-### Maintainer / Human Reviewer
+The ontology marks these as high-governance areas:
 
-Responsible for final approval, reputation update decisions, task board governance, and preventing uncontrolled automation.
+- Benchmark result fixtures
+- Benchmark runner
+- Result schema
+- Claims policy
+- Contribution rubric
+- Task board and next-agent flow
+- MCP interface
+- AGENT operating instructions
+- Contribution log
 
-## High-Value Governance Relationships
+Changes to these areas should trigger review by at least one governance agent and, when relevant, human review.
 
-- `AGENT.md` defines the operating laws for all AI agents.
-- `machine_index.json` exposes machine-readable repo entrypoints and schemas.
-- `TASK_BOARD.md` manages human/agent Kanban tasks.
-- `NEXT_AGENT_STEP.md` defines the recursive next-agent onboarding path.
-- `CONTRIBUTION_LOG.md` records project memory and reputation updates.
-- `docs/qml_claims_policy.md` governs allowed and disallowed result claims.
-- `docs/benchmark_methodology.md` governs fair comparisons.
-- `docs/contribution_value_rubric.md` governs contribution scoring.
-- `scripts/validate_repo.py` validates benchmark schema and contribution structure.
-- `benchmarks/runner.py` aggregates existing benchmark results without uncontrolled expensive execution.
-- `mcp/server.py` exposes a lightweight local command interface.
+## 8. How to Use the GraphML
 
-## Recommended Agent Use Pattern
+Python example:
 
-Before changing the repo, an AI agent should:
+```python
+import networkx as nx
 
-1. Read `machine_index.json`.
-2. Read `AGENT.md`.
-3. Read `TASK_BOARD.md`.
-4. Read `NEXT_AGENT_STEP.md`.
-5. Choose one small task.
-6. Create or update a contribution packet.
-7. Ensure every QML experiment includes a classical baseline.
-8. Run validation locally.
-9. Submit a small, reviewable change.
-10. Avoid unsupported claims, auto-merge, auto-benchmark loops, or dependency sprawl.
+G = nx.read_graphml('agent_team_governance_ontology.graphml')
 
-## GraphML Use
+# Find files owned by the EthicsClaimsReviewer
+owned = [
+    target for source, target, data in G.edges(data=True)
+    if source == 'agent:EthicsClaimsReviewer' and data.get('relationship') == 'owns'
+]
+print(owned)
+```
 
-The companion GraphML file, `agent_team_governance_ontology.graphml`, encodes this governance structure as nodes and typed edges. This makes it possible for future agents to query relationships such as:
+Potential agent queries:
 
-- Which files define governance rules?
-- Which agent reviews benchmark claims?
-- Which files must be checked before modifying benchmark results?
-- Which risks apply to a new QML experiment?
-- Which scripts validate the repository?
-- Which docs should be updated after a benchmark contribution?
+```text
+Before editing examples/moons_quantum_kernel_comparison.py, which agents and review gates apply?
+Which files mitigate unsupported quantum advantage claims?
+Which tasks are governed by the TaskBoardCuratorAgent?
+Which validation files depend on schemas/experiment_result.schema.json?
+```
 
-## Design Principle
+## 9. Next Improvements
 
-The ontology is not intended to replace human judgment. It is a map that helps agents operate with more context, restraint, and accountability.
-
-The correct behavior for future agents is:
-
-> Make the smallest useful improvement, preserve baselines, document limitations, validate locally, and leave the system easier for the next agent to understand.
+1. Add this ontology to the repo under `ontology/agent_team_governance_ontology.graphml`.
+2. Add an `ontology/README.md` explaining how agents should query it.
+3. Add a small script `scripts/query_ontology.py` for common questions.
+4. Generate a visual SVG/PNG from the GraphML.
+5. Add repo CI or local validation that checks the ontology against known files.
+6. Extend with import/dependency analysis from actual Python AST parsing.
+7. Add PR-template hooks mapping touched files to required agents.

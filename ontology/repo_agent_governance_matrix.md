@@ -1,45 +1,43 @@
-# Repo Agent Governance Matrix
+# QML Agent Lab — Repo Agent Governance Matrix
 
-Repository: `Aggredicus/qml-agent-lab`
+## Agent Ownership Matrix
 
-This matrix maps major repo areas to responsible agent roles, review gates, and governance risks.
+| Agent | Owns / Reviews | Required When |
+|---|---|---|
+| RepoStewardAgent | `AGENT.md`, `machine_index.json`, dependency/boundary policies | Repo-wide governance, automation, dependency, or structural changes. |
+| QMLResearcherAgent | research docs, source registry, citations | New methods, papers, claims, or framework evaluations. |
+| QMLArchitectAgent | QML examples, tooling map, experiment architecture | Encoding, ansatz, backend, feature-map or QML framework changes. |
+| ClassicalBaselineEngineer | classical baselines and benchmark comparison integrity | Any new QML benchmark or QML model result. |
+| ExperimentEngineer | runnable scripts in `examples/` | Code implementation or experiment script changes. |
+| EvaluatorAgent | benchmark methodology, runner, results, leaderboard | Any metric, result, split, dataset, or comparison change. |
+| EthicsClaimsReviewer | claims policy, limitations, published language | Any README/report/result wording implying QML performance or advantage. |
+| DocumentationAgent | README, templates, quickstart, reports, cards | Documentation, templates, model/dataset card updates. |
+| ContributionReviewerAgent | contribution log, rubric, reputation delta | PR review, contribution packets, scoring, reputation updates. |
+| TaskBoardCuratorAgent | task board, next-agent step, tasks | Task additions, task movement, next-agent workflow changes. |
+| SchemaGuardianAgent | schemas, validation script, machine-readable artifacts | Schema/result/packet structure changes. |
+| MCPInterfaceAgent | `mcp/server.py` | Local command interface or agent command changes. |
+| SecuritySafetyAgent | automation boundaries, secrets, external calls | Anything that could auto-run, auto-merge, call external services, or leak secrets. |
 
-| Area | Primary Agent | Required Reviewer | Purpose | Key Risks | Required Checks |
-|---|---|---|---|---|---|
-| `AGENT.md` | Documentation Agent | Maintainer / Human Reviewer | Defines agent operating laws | Governance drift, unsafe autonomy | Keep laws aligned with repo principles |
-| `machine_index.json` | Documentation Agent | Experiment Engineer | Machine-readable repo entrypoints | Stale entrypoints, broken agent routing | Validate paths and schemas |
-| `TASK_BOARD.md` | Documentation Agent | Maintainer / Human Reviewer | Human/agent Kanban system | Task sprawl, unsafe autonomous task mutation | Human approval for board changes |
-| `NEXT_AGENT_STEP.md` | Documentation Agent | Maintainer / Human Reviewer | New-agent onboarding sequence | Recursive agent loops, missing guardrails | Ensure small-task discipline |
-| `CONTRIBUTION_LOG.md` | Maintainer / Human Reviewer | Ethics & Claims Reviewer | Project memory and reputation tracking | Reputation gaming, unfair scoring | Use rubric, reward reproducibility |
-| `agents/` | Documentation Agent | Maintainer / Human Reviewer | Role definitions | Role overlap, vague responsibilities | Keep roles small and operational |
-| `templates/` | Documentation Agent | Evaluator Agent | Reusable experiment artifacts | Missing required fields | Preserve baseline and limitations fields |
-| `examples/` | Experiment Engineer | Evaluator Agent | Runnable examples | Heavy dependencies, irreproducibility | Graceful imports, small scripts |
-| `benchmarks/` | Evaluator Agent | Classical Baseline Engineer | Benchmark results and aggregation | Missing baselines, benchmark gaming | Same dataset/split/metric, schema validation |
-| `benchmarks/results/` | Evaluator Agent | Ethics & Claims Reviewer | Stored benchmark fixtures | Overstated result interpretation | Verify claim status vs delta |
-| `schemas/` | Experiment Engineer | Evaluator Agent | Validation schema | Schema drift, incompatible results | Validate sample fixtures |
-| `mcp/` | Experiment Engineer | Maintainer / Human Reviewer | Lightweight local command interface | Uncontrolled execution, expensive runs | No auto-run expensive benchmarks |
-| `scripts/` | Experiment Engineer | Evaluator Agent | Validation and helper scripts | Silent failure, destructive helpers | Clear errors, no hidden automation |
-| `docs/qml_claims_policy.md` | Ethics & Claims Reviewer | Maintainer / Human Reviewer | Claim discipline | Quantum hype | Weaken claims beyond evidence |
-| `docs/benchmark_methodology.md` | Evaluator Agent | Classical Baseline Engineer | Fair comparison rules | Leakage, unfair comparisons | Same dataset/split/metric |
-| `docs/contribution_value_rubric.md` | Maintainer / Human Reviewer | Ethics & Claims Reviewer | Contribution scoring | Accuracy-only incentives | Reward signal, reproducibility, honesty |
-| `tasks/` | Documentation Agent | Maintainer / Human Reviewer | Task definitions | Unsafe task expansion | Keep tasks bounded and reviewable |
-| `agent_contributions/` | Contributor Agent | Maintainer / Human Reviewer | Structured contribution packets | Unreviewed edits, missing validation | Packet includes risks, validation, limitations |
-| `ontology/` | Documentation Agent | Maintainer / Human Reviewer | Agent governance graph artifacts | Stale ontology | Regenerate after major repo changes |
+## Mandatory Review Gates
 
-## Default Review Routing
+| Gate | Trigger | Primary Agent |
+|---|---|---|
+| BaselineIntegrity | New/changed benchmark or QML result | ClassicalBaselineEngineer |
+| Reproducibility | Dataset/split/seed/metric/backend/environment changes | EvaluatorAgent |
+| ClaimDiscipline | Any language about performance, superiority, advantage, or significance | EthicsClaimsReviewer |
+| SmallChange | Broad rewrites, repo structure, dependency changes | RepoStewardAgent |
+| Validation | Schema/result/packet/benchmark artifacts | SchemaGuardianAgent |
+| HumanApproval | Auto-run, auto-merge, uncontrolled loops, expensive automation | RepoStewardAgent + SecuritySafetyAgent |
 
-- New QML method: QML Researcher Agent → QML Architect Agent → Classical Baseline Engineer → Evaluator Agent → Ethics & Claims Reviewer.
-- New benchmark result: Classical Baseline Engineer → Evaluator Agent → Ethics & Claims Reviewer → Maintainer / Human Reviewer.
-- New docs/templates: Documentation Agent → relevant domain agent → Maintainer / Human Reviewer.
-- New scripts/MCP changes: Experiment Engineer → Evaluator Agent → Maintainer / Human Reviewer.
-- New governance policy: Documentation Agent → Ethics & Claims Reviewer → Maintainer / Human Reviewer.
+## PR Routing Rules
 
-## Non-Negotiable Gates
+1. If a PR touches `benchmarks/results/*`, route to EvaluatorAgent, ClassicalBaselineEngineer, EthicsClaimsReviewer, and SchemaGuardianAgent.
+2. If a PR touches `examples/*`, route to ExperimentEngineer and either QMLArchitectAgent or ClassicalBaselineEngineer depending on model type.
+3. If a PR touches `docs/qml_claims_policy.md`, route to EthicsClaimsReviewer and RepoStewardAgent.
+4. If a PR touches `AGENT.md`, `machine_index.json`, `TASK_BOARD.md`, `NEXT_AGENT_STEP.md`, or `CONTRIBUTION_LOG.md`, route to RepoStewardAgent and the relevant governance agent.
+5. If a PR adds dependencies, route to RepoStewardAgent and SecuritySafetyAgent.
+6. If a PR modifies `mcp/server.py`, route to MCPInterfaceAgent and SecuritySafetyAgent.
 
-1. Classical baseline required for every QML experiment.
-2. Claims must match evidence.
-3. Limitations must be documented.
-4. Changes must be small and reviewable.
-5. No auto-merge or uncontrolled agent loops.
-6. No large dependency additions without explicit justification.
-7. Negative or inconclusive results are acceptable when reproducible and honestly reported.
+## Golden Rule
+
+The repo should become more honest, reproducible, auditable, and useful to future agents after every accepted contribution.

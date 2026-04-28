@@ -20,9 +20,10 @@ python scripts/query_ontology.py gates <path>
 9. Run validation:
 
 ```bash
+python scripts/validate_repo.py
+python scripts/validate_ontology.py
 python benchmarks/runner.py
 python mcp/server.py get_results
-python scripts/validate_ontology.py
 ```
 
 10. Submit a Pull Request using the PR template
@@ -44,5 +45,9 @@ If repo structure, governance roles, benchmark artifacts, or review-routing rule
 ```bash
 python scripts/validate_ontology.py
 ```
+
+## v1.2 Planning Note
+
+The `v1.1` branch keeps a single bundled GraphML ontology as the stable query target. A future `v1.2` branch may introduce modular GraphML source files, a build script, and stronger validation for merging those modules into the bundled ontology.
 
 This creates a recursive improvement loop across contributors while keeping changes small, reviewable, and evidence-aligned.
